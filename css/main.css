@@ -1,3 +1,65 @@
-/*
- * Estilos de tu proyecto
- */
+
+/*ESTILIZANDO LOS LINKS DE LAS SEDES**/
+
+
+.formatLinkSedeYellow{
+  display:block;
+  outline-color: 1px solid black;
+  padding:3em;
+  background-color:#ffc030;
+  text-decoration: none;
+  width:15%;
+  font-family: 'Ultra', serif;
+  font-weight:bolder;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 10%;
+}
+.formatLinkSedelightYellow{
+  background-color: #ffeeb9;
+}
+.formatLinkSedeYellow:hover{
+  opacity: 0.5;
+}
+
+
+/******* Estilos del Tab comineza*************
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Estilo de los botones que son usados para abrir el contenido del tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+/* Cambia el color del fondo de los botones al pasar el mouse por encima */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* crea un activo a la clase tracklink actual pinta de gris al boton cliqueado */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+/* Estilo de los contenidos del los tabs */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+/******* Estilos del Tab Termina*************

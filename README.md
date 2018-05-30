@@ -23,3 +23,41 @@
 
 > Nota: No olvides que es una buena práctica describir tu proyecto en este
 > archivo `README.md` y también desplegar tu web a Github Pages :smiley:.
+
+# **DATA-DASHBOARD**
+---
+* **Curso:** _Creando tu primer sitio web interactivo_
+* **Unidad:** _Producto final_
+
+ELABORADOR POR:
+
+** LIZBETH PEREZ VIRGEN**
+** ELVIA VILLALOBOS.**
+
+## Objetivo:
+Diseñar una Herramienta que le Permita a los Training Managers y Profesores de Laboratoria Consultar de Forma eficaz los siguientes datos:
+
+
+- No.de estudiantes inscritas.
+
+- No. de estudiantes que desertaron.
+
+- No. y % de estudiantes que pasan el criterio mínimo de evaluación 70%.
+
+- Promedio de notas por sprint (Final).
+
+- Promedio de notas HSE.
+
+- Promedio de notas técnicas.
+
+- El porcentaje de estudiantes satisfechas con la experiencia de Laboratoria.
+
+- La puntuación promedio de los profesores.
+
+- La puntuación promedio de las jedi masters.
+
+***
+
+## Pseudo-Codigo:
+
+## Diagrama de Flujo
