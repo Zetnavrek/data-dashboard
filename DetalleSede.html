@@ -6,29 +6,42 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+    <main>
+      <!--Seccion de Filtros de Generacion y Turno -->
+      <section id="filtros-Principales"> <!--Filtro Generacion-->
+        <select name="Generacion" id="generationFilter" onchange=sedeGenerals()><!--el onchage nos sirve para en un select cuando haras el cambio entre una opcion y otra y al hacer el cambio de manda a llamar a la Funcion sedeGenrals.-->
+          <option value="" disabled selected >Selecciona una Generacion...</option>
+        </select>
+        <select name="turno" id=""><!--Filtro Turno-->
+          <option value="" disabled selected >Turno</option>
+          <option value="matututino" disabled selected >Matutino</option>
+          <option value="matututino" disabled selected >Vespertino</option>
+        </select>
+      </section>
 
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Generales')">Generales</button>
-  <button class="tablinks" onclick="openTab(event, 'Estudiantes')">Estudiantes</button>
-  <button class="tablinks" onclick="openTab(event, 'Laboratorians')">Laboratorians</button>
-</div>
+      <!--Seccion de los Tabs de Generales,Estudiantes y Laboratorias.-->
+      <section>
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Generales')">Generales</button>
+          <button class="tablinks" onclick="openTab(event, 'Estudiantes')">Estudiantes</button>
+          <button class="tablinks" onclick="openTab(event, 'Laboratorians')">Laboratorians</button>
+       </div>
 
-<!-- Tab content -->
-<div id="Generales" class="tabcontent">
-  <h3>Generales</h3>
-  <p></p>
-</div>
-
-<div id="Estudiantes" class="tabcontent">
-  <h3>Estudiantes</h3>
-  <p></p>
-</div>
-
-<div id="Laboratorians" class="tabcontent">
-  <h3>Laboratorians</h3>
-  <p></p>
-</div>
-
+     <!-- Tab content -->
+       <div id="Generales" class="tabcontent">
+         <h3>Generales</h3>
+         <p></p>
+       </div>
+       <div id="Estudiantes" class="tabcontent">
+         <h3>Estudiantes</h3>
+         <p></p>
+       </div>
+        <div id="Laboratorians" class="tabcontent">
+          <h3>Laboratorians</h3>
+          <p></p>
+        </div>
+    </section>
+   </main>
     <!-- Base de datos -->
 		<script src="./js/data.js"></script>
 		<!-- Aquí va tus archivos JS -->

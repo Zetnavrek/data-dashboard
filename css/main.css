@@ -29,7 +29,7 @@
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color:#ffc030;;
 }
 
 /* Estilo de los botones que son usados para abrir el contenido del tab */
@@ -45,7 +45,7 @@
 
 /* Cambia el color del fondo de los botones al pasar el mouse por encima */
 .tab button:hover {
-    background-color: #ddd;
+    background-color: #ffeeb9;;
 }
 
 /* crea un activo a la clase tracklink actual pinta de gris al boton cliqueado */
