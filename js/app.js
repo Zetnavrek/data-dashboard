@@ -20,12 +20,19 @@ var sedeGenerals=function(){
   var selectedValue = generationSelect.options[generationSelect.selectedIndex].value;// Se rescata el valor de la opcion(2017-1) que se seleccione.
   var objContentGeneration= sede[selectedValue];// se Especifica que del objeto data tome todo lo que esta dentro de la key (2017-1 {...}) del periodo seleccionado.
   var arrayStudents= objContentGeneration['students'];//Se Extrae el Arreglo de todas las Estudiantes.
+  //CALCULADO TOTAL DE ALUMNAS ACTIVAS Y TOTAL DE ALUMNAS INACTIVAS.
   var sumActiveStudents=0;
   var sumInactiveStudents=0;
   for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
     var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
-    if(studentInfo.active==true){
+    if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
       sumActiveStudents+=1; //se suman estudiantes Activas.
+      if(studentInfo.sprints) // Se especifica que cuando entre a la llave sprints del Objeto que se encuentra dentro de la variable studentInfo haga lo que sigue
+         var arraySprints= studentInfo['sprints']; // Se guarda el contenido de la llave sprints en una variable
+         for(var f=0; f<arraySprints.length;f++){
+             var obcjetSprintNumber=arraySprints[f];
+             console.log(obcjetSprintNumbe);
+         } //Se recorrera el arreglo de todos los sprints
     }else{
       sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
     }
@@ -33,6 +40,34 @@ var sedeGenerals=function(){
   console.log('Activos'+sumActiveStudents);
   console.log('Inactivos'+sumInactiveStudents);
   console.log('Total'+arrayStudents.length);
+  //CALCULANDO LOS PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS
+  var percentActive=(sumActiveStudents/arrayStudents.length)*100;
+  var percentInactive=(sumInactiveStudents/arrayStudents.length)*100;
+  //console.log(percentActive);
+  //console.log(percentInactive);
+  var arrayRantings=objContentGeneration['ratings'];
+  //console.log(arrayRantings);
+  for(var m=0; m<arrayRantings.length;m++){
+    var ratingInfo=arrayRantings[m];
+    //console.log(ratingInfo);
+    for(var i in ratingInfo){
+      //console.log(i);
+      if(i=='student'){
+        var objtstundet=ratingInfo[i];
+        //console.log(objtstundet);
+        var contNoCumple=objtstundet['no-cumple'];
+        var cumple=objtstundet['cumple'];
+          var cumple=objtstundet['supera'];
+        //console.log(contNoCumple);
+
+        //console.log(entrandoRatingStudent);
+
+      }//cierra el if
+
+    }//cierra el for in
+    }//cierra el for em m
+
+
 }//cierra la Funcion SedeGenerals*/
 
 
