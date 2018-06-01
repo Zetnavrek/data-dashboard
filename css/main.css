@@ -1,25 +1,194 @@
+body {
+    background-color: white;
+    font-family: 'Tajawal', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:whitesmoke;
+    width: 100%;
+    height: 120px;
+}
+
+#logo {
+    position:relative;
+    display:inline-block;
+    left:40%;
+    top:15px;
+    height: 100px;
+    width: 250px;
+}
+
+#logo-venues {
+    position:relative;
+    display:inline-block;
+    left:2%;
+    top:10px;
+    height: 65px;
+    width: 65px;
+}
+#avatar {
+    position: relative;
+    display: inline-block;
+    left: 89%;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    bottom:85px;
+}
+
+#avatar-venues {
+    position: relative;
+    display: inline-block;
+    left: 89%;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    bottom:65px;
+}
+
+nav {
+    position: relative;
+    display: block;
+    left: 2%;
+    bottom: 70px;
+}
+
+select {
+    border: none;
+    border-bottom: 2px solid lightblue;
+    width: 20%;
+    height: 30px;
+    border-radius: 5px;
+
+}
+#section1 {
+    height: 530px;
+    width: 100%;
+    background-color:white;
+}
+
+#linkers {
+    position: relative;
+    display: inline-block;
+    height: 400px;
+    width: 60%;
+    left: 20%;
+    text-align: center;
+    top: 100px;
+    border: 1px solid black;
+}
+
+a{
+    display: block;
+    position: relative;
+    height: 45px;
+    width: 280px;
+    margin: 1%;
+    left: 55%;
+    /*border: 1px solid red;*/
+    text-decoration: none;
+    bottom: 200px;
+    border-radius: 4px;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+#arequipa {
+    background-color: #56F89A;
+    padding-top: 0;
+    color:  white;
+}
+
+#arequipa:hover{
+    opacity: .60;
+}
+
+#lima {
+    background-color: #56F89A;
+    padding-top: 0; 
+    color:white;
+    
+}
+
+#lima:hover{
+    opacity: .60;
+}
+
+#gdl {
+    background-color: #56F89A;
+    padding-top: 0;
+    color:white;
+}
+
+#gdl:hover {
+    opacity:.60;
+}
+
+#chile {
+    background-color: #56F89A;
+    padding-top: 0;
+    color:white;
+}
+
+#chile:hover{
+    opacity:.60;
+}
+
+#cdmx {
+    background-color: #56F89A;
+    padding-top: 0;
+    color:white;
+}
+
+#cdmx:hover{
+    opacity: .60;
+}
+
+#brazil {
+    background-color:#56F89A;
+    padding-top: 0;
+    color: white;
+}
+
+#brazil:hover{
+    opacity: .60;
+}
+
+#index-title {
+    position: relative;
+    display: inline-block;
+    height: 80px;
+    max-width: fit-content;
+    right: 20%;
+    font-size: 85px;
+    color: rgb(100, 99, 99);
+    top:180px;
+}
 
 /*ESTILIZANDO LOS LINKS DE LAS SEDES**/
 
 
-.formatLinkSedeYellow{
-  display:block;
-  outline-color: 1px solid black;
-  padding:3em;
-  background-color:#ffc030;
-  text-decoration: none;
-  width:15%;
-  font-family: 'Ultra', serif;
-  font-weight:bolder;
-  text-align: center;
-  font-size: 18px;
-  border-radius: 10%;
+/*.formatLinkSedeYellow{
+    display:block;
+    outline-color: 1px solid black;
+    padding:3em;
+    background-color:#ffe923;
+    text-decoration: none;
+    width:15%;
+    font-family: 'Ultra', serif;
+    font-weight:bolder;
+    text-align: center;
+    font-size: 18px;
 }
 .formatLinkSedelightYellow{
-  background-color: #ffeeb9;
+    background-color: #ffeeb9;
 }
 .formatLinkSedeYellow:hover{
-  opacity: 0.5;
+    border-radius: 10px;
+    opacity: 0.5;
 }
 
 
@@ -29,28 +198,37 @@
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color:#ffc030;;
+    background-color:#ffe923;
+    height: 45px;
 }
 
 /* Estilo de los botones que son usados para abrir el contenido del tab */
 .tab button {
     background-color: inherit;
-    float: left;
-    border: none;
+    display: inline-block;
+    position:relative;
+    border:none;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    left: 60%;
+    margin: 0px 5px;
+    color: rgba(32, 32, 32, 0.829);
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 15px;
 }
 
 /* Cambia el color del fondo de los botones al pasar el mouse por encima */
 .tab button:hover {
-    background-color: #ffeeb9;;
+    background-color: #ffeeb9;
+    border-radius: 10px;
 }
 
 /* crea un activo a la clase tracklink actual pinta de gris al boton cliqueado */
 .tab button.active {
     background-color: #ccc;
+    border-radius: 10px;
 }
 
 /* Style the tab content */
@@ -61,5 +239,3 @@
     border: 1px solid #ccc;
     border-top: none;
 }
-
-/******* Estilos del Tab Termina*************
