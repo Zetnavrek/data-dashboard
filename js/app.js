@@ -48,18 +48,20 @@ var sedeGenerals=function(){
                 console.log(sumPointsXsprint);
                 
             }//cierra el for en f 
-            //Se recorrera el arreglo de todos los sprints
-            // console.log(sumPointsXsprint)
-            newObjtInfo.sumaTotalAllSprints=sumPointsXsprint; //se le Asigna al Objeto nuevo creado la key suma total all Sprint y se asigna el valor de esa key
+            newObjtInfo.sumaTotalAllSprints=sumPointsAllSprints; //se le Asigna al Objeto nuevo creado la key suma total all Sprint y se asigna el valor de esa key
             console.log( sumPointsAllSprints);
             //console.log(newObjtInfo);
             //arrayStudentResults.push(studentInfo['name']: sumPointsXsprint);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
+            
             var approveGoal=0;
             var notApprovedGoal=0;
             if(sumPointsAllSprints>=goalPoints){
                 approveGoal++;
                 console.log("aluma aprbada"+approveGoal);
+                
+                studentApproveGoal.push(newObjtInfo.name);
+                console.log(studentApproveGoal);
 
             }else{
                 notApprovedGoal++;
@@ -69,7 +71,9 @@ var sedeGenerals=function(){
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
         }
         
+        console.log(studentApproveGoal);
     }//cierra for en i
+    console.log(studentApproveGoal);
     console.log(arrayStudentResults);
     console.log('Activos'+sumActiveStudents);
     console.log('Inactivos'+sumInactiveStudents);
