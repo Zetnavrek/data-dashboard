@@ -11,7 +11,7 @@ function getParameterByName(name, url) {
 }
 
 var sede = data[getParameterByName('sede')];
-console.log(sede);
+//console.log(sede);
 
 //*************DETERMINANDO GENERALES POR SEDE*********************
 
@@ -23,20 +23,43 @@ var sedeGenerals=function(){
   //CALCULADO TOTAL DE ALUMNAS ACTIVAS Y TOTAL DE ALUMNAS INACTIVAS.
   var sumActiveStudents=0;
   var sumInactiveStudents=0;
+  var arrayStudentResults=[];// Se almacenara la suma de los puntos de cada estudiante.
+  var sumTotalall=0;
+  var newObjtInfo= new Object();
+  var sumAcumulativo=0;
   for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
     var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
+    newObjtInfo.name=studentInfo['name'];
+
+    var sumPointsXsprint=0;
     if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
       sumActiveStudents+=1; //se suman estudiantes Activas.
       if(studentInfo.sprints) // Se especifica que cuando entre a la llave sprints del Objeto que se encuentra dentro de la variable studentInfo haga lo que sigue
          var arraySprints= studentInfo['sprints']; // Se guarda el contenido de la llave sprints en una variable
          for(var f=0; f<arraySprints.length;f++){
              var obcjetSprintNumber=arraySprints[f];
-             console.log(obcjetSprintNumbe);
-         } //Se recorrera el arreglo de todos los sprints
+             //console.log(obcjetSprintNumber);
+             var obcjetsPoints=obcjetSprintNumber['score'];
+             sumPointsXsprint2=obcjetsPoints['tech']+obcjetsPoints['hse'];//saca la suma de puntos de hse y tech de todos los sprint
+             sumPointsXsprint+=obcjetsPoints['tech']+obcjetsPoints['hse'];//Saca la Suma de puntos de hse y tech por sprint
+
+             console.log(sumPointsXsprint2);
+         }
+          //Se recorrera el arreglo de todos los sprints
+        // console.log(sumPointsXsprint)
+         newObjtInfo.sumaTotalallSprints=sumPointsXsprint; //se le Asigna al Objeto nuevo creado la key suma total all Sprint y se asigna el valor de esa key
+            //console.log(newObjtInfo);
+            arrayStudentResults.push([newObjtInfo.name,sumPointsXsprint]);
+         //arrayStudentResults.push(studentInfo['name']: sumPointsXsprint);
+         //console.log(arrayStudentResults);
+
     }else{
       sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
-    }
-  }
+      }
+
+  }//cierra for en i
+  console.log(arrayStudentResults);
+  console.log(sumAcumulativo);
   console.log('Activos'+sumActiveStudents);
   console.log('Inactivos'+sumInactiveStudents);
   console.log('Total'+arrayStudents.length);
