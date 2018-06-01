@@ -26,6 +26,10 @@ var sedeGenerals=function(){
     var arrayStudentResults=[];// Se almacenara la suma de los puntos de cada estudiante.
     var sumTotalall=0;
     var newObjtInfo= new Object();
+    var approveGoal=0;
+    var notApprovedGoal=0;
+    var studentsApprovedGoal=[];
+    var studentsNotApprovedGoal=[];
     
     for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
     var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
@@ -54,18 +58,17 @@ var sedeGenerals=function(){
             //arrayStudentResults.push(studentInfo['name']: sumPointsXsprint);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
             
-            var approveGoal=0;
-            var notApprovedGoal=0;
             if(sumPointsAllSprints>=goalPoints){
                 approveGoal++;
                 console.log("aluma aprbada"+approveGoal);
-                
-                studentApproveGoal.push(newObjtInfo.name);
-                console.log(studentApproveGoal);
-
+                studentsApprovedGoal.push(newObjtInfo.name);
+                console.log("Nombres de estudiantes aprobadas" + studentsApprovedGoal);
             }else{
                 notApprovedGoal++;
                 console.log("aluma no aprobada"+notApprovedGoal);
+                studentsNotApprovedGoal.push(newObjtInfo.name);
+                console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
+
             }
         }else{
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.

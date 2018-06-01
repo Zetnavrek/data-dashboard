@@ -26,18 +26,6 @@
           </div>
       </header>
     <main>
-      
-      <!--<section id="filtros-Principales"> <!--Filtro Generacion-->
-        <!--<select name="Generacion" id="generationFilter" onchange=sedeGenerals()><!--el onchage nos sirve para en un select cuando haras el cambio entre una opcion y otra y al hacer el cambio de manda a llamar a la Funcion sedeGenrals.-->
-          <!--<option value="" disabled selected >Selecciona una Generacion...</option>
-        </select>
-        <select name="turno" id=""><!--Filtro Turno-->
-         <!-- <option value="" disabled selected >Turno</option>
-          <option value="matututino" disabled selected >Matutino</option>
-          <option value="matututino" disabled selected >Vespertino</option>
-        </select>
-      </section> -->
-
       <!--Seccion de los Tabs de Generales,Estudiantes y Laboratorias.-->
       <section>
         <div class="tab">
@@ -49,7 +37,17 @@
       <!-- Tab content -->
         <div id="Generales" class="tabcontent">
           <h3>Generales</h3>
-          <p></p>
+          <div id="data-container-generals" class="grid">
+            <table class="table">
+              <tr>
+                <th>Numero de Alumnas Aprobadas</th>
+                <th>Numero de Alumnas No Aprobadas</th>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>5</td>
+              </tr>
+            </table>
         </div>
         <div id="Estudiantes" class="tabcontent">
           <h3>Estudiantes</h3>
