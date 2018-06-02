@@ -20,94 +20,165 @@ var sedeGenerals=function(){
     var selectedValue = generationSelect.options[generationSelect.selectedIndex].value;// Se rescata el valor de la opcion(2017-1) que se seleccione.
     var objContentGeneration= sede[selectedValue];// se Especifica que del objeto data tome todo lo que esta dentro de la key (2017-1 {...}) del periodo seleccionado.
     var arrayStudents= objContentGeneration['students'];//Se Extrae el Arreglo de todas las Estudiantes.
-  //CALCULADO TOTAL DE ALUMNAS ACTIVAS Y TOTAL DE ALUMNAS INACTIVAS.
+
+    //**************CALCULADO TOTAL DE ALUMNAS ACTIVAS Y TOTAL DE ALUMNAS INACTIVAS*************.
+    //Declarando Variables 
     var sumActiveStudents=0;
     var sumInactiveStudents=0;
     var arrayStudentResults=[];// Se almacenara la suma de los puntos de cada estudiante.
     var sumTotalall=0;
     var newObjtInfo= new Object();
-    var approveGoal=0;
-    var notApprovedGoal=0;
-    var studentsApprovedGoal=[];
-    var studentsNotApprovedGoal=[];
-    
-    for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
-    var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
-    newObjtInfo.name=studentInfo['name'];
+    var approveGoal=0;//contador para alumnas que aprueban meta
+    var notApprovedGoal=0;// contador para alumnas que no apruban meta
+    var studentsApprovedGoal=[];//para guardar nombre de alumnas que aprueban 
+    var studentsNotApprovedGoal=[];//para guardar nombre de alumnas que no aprueban
     var sumPointsAllSprints=0;
     var sumPointsXsprint=0;
     var goalPoints=0;
-    if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
-        sumActiveStudents+=1; //se suman estudiantes Activas.
-        if(studentInfo.sprints) // Se especifica que cuando entre a la llave sprints del Objeto que se encuentra dentro de la variable studentInfo haga lo que sigue
-            var arraySprints= studentInfo['sprints']; // Se guarda el contenido de la llave sprints en una variable
-            goalPoints=2100*arraySprints.length;
-            console.log("los puntos meta son:"+goalPoints);
-            for(var f=0; f<arraySprints.length;f++){
-                var obcjetSprintNumber=arraySprints[f];
+    var goalPointsHse=0;
+    var goalPointsTech=0;
+    
+
+    for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
+        var sumPointsAllSprints=0;
+        var sumPointsXsprint=0;
+        var sumPointsAllSprintsHse=0;
+        var sumPointsAllSprintsTech=0;
+        var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
+        newObjtInfo.name=studentInfo['name'];
+        if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
+            sumActiveStudents+=1; //se suman estudiantes Activas.
+            if(studentInfo.sprints){ // Se especifica que cuando entre a la llave sprints del Objeto que se encuentra dentro de la variable studentInfo haga lo que sigue
+                var arraySprints= studentInfo['sprints']; // Se guarda el contenido de la llave sprints en una variable
+                goalPoints=2100*arraySprints.length;//se obtiene el valor de puntos requeridos para superar el 70% de todos los sprints
+                goalPointsHse=840*arraySprints.length;
+                goalPointsTech=1260*arraySprints.length;
+                console.log("los puntos meta son:"+goalPoints);
+                for(var f=0; f<arraySprints.length;f++){
+                    var obcjetSprintNumber=arraySprints[f];
                 //console.log(obcjetSprintNumber);
-                var obcjetsPoints=obcjetSprintNumber['score'];
-                sumPointsXsprint=obcjetsPoints['tech']+obcjetsPoints['hse'];//saca la suma de puntos de hse y tech por sprint
-                sumPointsAllSprints+=obcjetsPoints['tech']+obcjetsPoints['hse'];//Saca la Suma de puntos de hse y tech de todos los srinpts
-                console.log(sumPointsXsprint);
+                    var obcjetsPoints=obcjetSprintNumber['score'];
+                    var pointsTech=obcjetsPoints['tech'];
+                    var pointsHse=obcjetsPoints['hse'];
+                    sumPointsXsprint=obcjetsPoints['tech']+obcjetsPoints['hse'];//saca la suma de puntos de hse y tech por sprint
+                    sumPointsAllSprints+=obcjetsPoints['tech']+obcjetsPoints['hse'];//Saca la Suma de puntos de hse y tech de todos los srinpts
+                    sumPointsAllSprintsHse+=pointsHse;
+                    sumPointsAllSprintsTech+=pointsTech;
+                }//cierra el for en f
                 
-            }//cierra el for en f 
+            }//el if de los sprints
             newObjtInfo.sumaTotalAllSprints=sumPointsAllSprints; //se le Asigna al Objeto nuevo creado la key suma total all Sprint y se asigna el valor de esa key
             console.log( sumPointsAllSprints);
             //console.log(newObjtInfo);
             //arrayStudentResults.push(studentInfo['name']: sumPointsXsprint);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
             
-            if(sumPointsAllSprints>=goalPoints){
+            if(sumPointsAllSprints>=goalPoints){ //determinando la cantidad de alumnas que superan la meta del 70 %
                 approveGoal++;
                 console.log("aluma aprbada"+approveGoal);
-                studentsApprovedGoal.push(newObjtInfo.name);
+                studentsApprovedGoal.push(newObjtInfo.name);//agregando los nombres de las alumnas que superan la meta un arreglo 
                 console.log("Nombres de estudiantes aprobadas" + studentsApprovedGoal);
-            }else{
+            }else{ // determinando cantidad de alumnas que no superan la meta del 70%
                 notApprovedGoal++;
                 console.log("aluma no aprobada"+notApprovedGoal);
-                studentsNotApprovedGoal.push(newObjtInfo.name);
+                studentsNotApprovedGoal.push(newObjtInfo.name); // agregando los nombres de las alumnas que no cumplieron con la meta del 70%
                 console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
 
-            }
+            }// cierra el else que determina la cantidad la cantidad de alumnas que no cumplen la meta 
+            if(sumPointsAllSprintsHse>=goalPointsHse){
+                console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
+            }else{}
+
         }else{
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
-        }
-        
-        console.log(studentApproveGoal);
+        }//cierra el else de incativas 
     }//cierra for en i
-    console.log(studentApproveGoal);
-    console.log(arrayStudentResults);
-    console.log('Activos'+sumActiveStudents);
-    console.log('Inactivos'+sumInactiveStudents);
-    console.log('Total'+arrayStudents.length);
+    var totalStudentSede=arrayStudents.length;
+
+    //********************AÑADIENDO DATOS AL HTML A TRAVES DEL DOM *****************/
+
+    //*****************************AÑADIENDO ALUMNAS ACTIVAS E INACTIVAS********** */
+    var containerTableActivesInactives=document.getElementById('containerTable');
+    var containerTotalStudents=document.getElementById('data-container-generals');
+    var containerNumberStudents=document.createElement('h3');
+    var containerRow=document.createElement('tr');
+    var containerActivesStudents=document.createElement('td');
+    var containerInactivesStudents=document.createElement('td');
+    var valueTotalStudentsSede=document.createTextNode(totalStudentSede);
+    var valueActivesStudents=document.createTextNode(sumActiveStudents);
+    var valueIctivesStudents=document.createTextNode(sumInactiveStudents);
+    containerNumberStudents.appendChild(valueTotalStudentsSede);
+    containerTotalStudents.appendChild(containerNumberStudents);
+    containerActivesStudents.appendChild(valueActivesStudents);
+    containerInactivesStudents.appendChild(valueIctivesStudents);
+    containerRow.appendChild(containerActivesStudents);
+    containerRow.appendChild(containerInactivesStudents);
+    containerTableActivesInactives.appendChild(containerRow);
+    //containerStudentsActivesInactives.replaceChild(containerInactivesStudents);
+
     //CALCULANDO LOS PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS
     var percentActive=(sumActiveStudents/arrayStudents.length)*100;
     var percentInactive=(sumInactiveStudents/arrayStudents.length)*100;
     //console.log(percentActive);
     //console.log(percentInactive);
+
+    //*****************CALCULANDO CANTIDAD Y % DE ACEPTACION */ y DETERMINANDO LOS PUNTOS DE TEACHERS Y JEDIS
     var arrayRantings=objContentGeneration['ratings'];
     //console.log(arrayRantings);
+    var totalSatisfactionxSpring=0;//Se utilizara para determinar la cantidad de alumnas satisfechas x sprint
+    var sumaSatisfactionAllSede=0;//Se utilziara para determinar el total de alumas satisfechas de toda la sede
+    var contRatingSprints=0;//para determinar la cantidad de Sprints
+    var sumAllRatingTeacher=0;//determinar la suma de todos los puntos de todos los sprints de Teacher 
+    var sumAllRatingJedi=0;////determinar la suma de todos los puntos de todos los sprints de Jedi
+    var resultadoSatisfactionXsede=0;//para determinar el porcentaje de Satisfaccion de toda la sede 
+    var percentAllPointsTeacher=0;
+    var percentAllPointsJedi=0;
+
     for(var m=0; m<arrayRantings.length;m++){
         var ratingInfo=arrayRantings[m];
         //console.log(ratingInfo);
         for(var i in ratingInfo){
             //console.log(i);
+            if(i=='sprint'){
+                contRatingSprints++;
+            }
             if(i=='student'){
                 var objtstundet=ratingInfo[i];
-                //console.log(objtstundet);
+                console.log(objtstundet);
                 var contNoCumple=objtstundet['no-cumple'];
                 var cumple=objtstundet['cumple'];
-                var cumple=objtstundet['supera'];
+                var supera=objtstundet['supera'];
+                totalSatisfactionxSpring=supera+cumple;//determinando el % de satisfaccion por Spring
+                console.log("hola"+totalSatisfactionxSpring);
         //console.log(contNoCumple);
 
         //console.log(entrandoRatingStudent);
-
+                sumaSatisfactionAllSede+=totalSatisfactionxSpring; //Se hace la Suma de todos los satisfechos de todos los  Sprint 
             }//cierra el if
+            
+            var pointsTeacherXsprint=0;//se vuelvan a hacer 0 para contabilizar desde cero cuando pase a la siguiente Estudiante
+            if(i=='teacher'){//se determinan los puntos de los teacher y Jedai x Sprint y en total de toda la sede
+                pointsTeacherXsprint=ratingInfo['teacher'];
+                console.log(pointsTeacherXsprint);
+                sumAllRatingTeacher+=pointsTeacherXsprint;
 
+            }//cierra el if de teacher
+            var pointsJediXsprint=0;
+            if(i=='jedi'){
+                pointsJediXsprint=ratingInfo['jedi'];
+                console.log(pointsJediXsprint);
+                sumAllRatingJedi+=pointsJediXsprint;
+            }
         }//cierra el for in
-    }//cierra el for em m
+        console.log(contRatingSprints);
 
+    }//cierra el for em m
+    resultadoSatisfactionXsede=sumaSatisfactionAllSede/contRatingSprints;
+    console.log("promedio de satisfaccion"+resultadoSatisfactionXsede);
+    percentAllPointsTeacher=sumAllRatingTeacher/contRatingSprints;
+    console.log("%Promedio de Teacher"+percentAllPointsTeacher);
+    percentAllPointsJedi=sumAllRatingJedi/contRatingSprints;
+    console.log("%Promedio de Jedi"+percentAllPointsJedi);
 
 }//cierra la Funcion SedeGenerals*/
 
@@ -115,7 +186,7 @@ var sedeGenerals=function(){
 /**************SE CREA EL FILTRO PRINCIPAL POR GENERACIONES**********************/
 var select=document.getElementById('generationFilter');
 propertiesArray= Object.keys(sede);// convierte los objetos dentro de cada una de las generaciones  en un arreglo
-for(var i=0; i<=propertiesArray.length-1;i++){ //recorre todas las generaciones de ese arreglo ojo:preguntar porque sale lo del proto
+for(var i=0; i<propertiesArray.length;i++){ //recorre todas las generaciones de ese arreglo 
     var generation=propertiesArray[i];
     var options=document.createElement('option');
     options.setAttribute('id','optionGeneration');
