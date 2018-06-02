@@ -238,7 +238,6 @@ a{
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-    height: 300px;
 }
 /*Se agrega y divide contenedor para agregar datos generales*/
 
@@ -260,4 +259,12 @@ a{
     position: relative;
     left: 10%;
     text-align: center;
+}
+
+#chart_div {
+    border: 1px solid green;
+    position: relative;
+    display: inline-block;
+    left: 60%;
+    bottom: 150px;
 }
