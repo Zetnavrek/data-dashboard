@@ -37,6 +37,7 @@ var sedeGenerals=function(){
     var goalPoints=0;
     var goalPointsHse=0;
     var goalPointsTech=0;
+    var arrayStudentsInactives=[];
     
 
     for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
@@ -53,7 +54,7 @@ var sedeGenerals=function(){
                 goalPoints=2100*arraySprints.length;//se obtiene el valor de puntos requeridos para superar el 70% de todos los sprints
                 goalPointsHse=840*arraySprints.length;
                 goalPointsTech=1260*arraySprints.length;
-                console.log("los puntos meta son:"+goalPoints);
+                //console.log("los puntos meta son:"+goalPoints);
                 for(var f=0; f<arraySprints.length;f++){
                     var obcjetSprintNumber=arraySprints[f];
                 //console.log(obcjetSprintNumber);
@@ -68,38 +69,47 @@ var sedeGenerals=function(){
                 
             }//el if de los sprints
             newObjtInfo.sumaTotalAllSprints=sumPointsAllSprints; //se le Asigna al Objeto nuevo creado la key suma total all Sprint y se asigna el valor de esa key
-            console.log( sumPointsAllSprints);
+            //console.log( sumPointsAllSprints);
             //console.log(newObjtInfo);
-            //arrayStudentResults.push(studentInfo['name']: sumPointsXsprint);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
             
             if(sumPointsAllSprints>=goalPoints){ //determinando la cantidad de alumnas que superan la meta del 70 %
                 approveGoal++;
-                console.log("aluma aprbada"+approveGoal);
+                //console.log("aluma aprbada"+approveGoal);
                 studentsApprovedGoal.push(newObjtInfo.name);//agregando los nombres de las alumnas que superan la meta un arreglo 
-                console.log("Nombres de estudiantes aprobadas" + studentsApprovedGoal);
+                //console.log("Nombres de estudiantes aprobadas" + studentsApprovedGoal);
             }else{ // determinando cantidad de alumnas que no superan la meta del 70%
                 notApprovedGoal++;
-                console.log("aluma no aprobada"+notApprovedGoal);
+                //console.log("aluma no aprobada"+notApprovedGoal);
                 studentsNotApprovedGoal.push(newObjtInfo.name); // agregando los nombres de las alumnas que no cumplieron con la meta del 70%
-                console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
+                //console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
 
             }// cierra el else que determina la cantidad la cantidad de alumnas que no cumplen la meta 
             if(sumPointsAllSprintsHse>=goalPointsHse){
-                console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
+                //console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
             }else{}
 
-        }else{
+        }else{//Se obtiene el Nombre y la Cantidad de Alumnas Inactivas 
+            arrayStudentsInactives.push(newObjtInfo.name);
+            var nameListInactive=newObjtInfo.name;
+            console.log(nameListInactive);
+            var containerListNameInactive=document.getElementById('listado-name-inactive');
+            var nameList=document.createElement('div');
+            var valueNameList=document.createTextNode(nameListInactive);
+            nameList.appendChild(valueNameList);
+            containerListNameInactive.appendChild(nameList);
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
         }//cierra el else de incativas 
     }//cierra for en i
+    console.log(arrayStudentsInactives);
+    console.log(arrayStudentResults);
     var totalStudentSede=arrayStudents.length;
 
     //********************AÑADIENDO DATOS AL HTML A TRAVES DEL DOM *****************/
 
     //*****************************AÑADIENDO ALUMNAS ACTIVAS E INACTIVAS********** */
     var containerTableActivesInactives=document.getElementById('containerTable');
-    var containerTotalStudents=document.getElementById('data-container-generals');
+    var containerTotalStudents=document.getElementById('container-venue-Sede');
     var containerNumberStudents=document.createElement('h3');
     var containerRow=document.createElement('tr');
     var containerActivesStudents=document.createElement('td');
@@ -144,12 +154,12 @@ var sedeGenerals=function(){
             }
             if(i=='student'){
                 var objtstundet=ratingInfo[i];
-                console.log(objtstundet);
+                //console.log(objtstundet);
                 var contNoCumple=objtstundet['no-cumple'];
                 var cumple=objtstundet['cumple'];
                 var supera=objtstundet['supera'];
                 totalSatisfactionxSpring=supera+cumple;//determinando el % de satisfaccion por Spring
-                console.log("hola"+totalSatisfactionxSpring);
+                //console.log("hola"+totalSatisfactionxSpring);
         //console.log(contNoCumple);
 
         //console.log(entrandoRatingStudent);
@@ -159,26 +169,26 @@ var sedeGenerals=function(){
             var pointsTeacherXsprint=0;//se vuelvan a hacer 0 para contabilizar desde cero cuando pase a la siguiente Estudiante
             if(i=='teacher'){//se determinan los puntos de los teacher y Jedai x Sprint y en total de toda la sede
                 pointsTeacherXsprint=ratingInfo['teacher'];
-                console.log(pointsTeacherXsprint);
+                //console.log(pointsTeacherXsprint);
                 sumAllRatingTeacher+=pointsTeacherXsprint;
 
             }//cierra el if de teacher
             var pointsJediXsprint=0;
             if(i=='jedi'){
                 pointsJediXsprint=ratingInfo['jedi'];
-                console.log(pointsJediXsprint);
+                //console.log(pointsJediXsprint);
                 sumAllRatingJedi+=pointsJediXsprint;
             }
         }//cierra el for in
-        console.log(contRatingSprints);
+        //console.log(contRatingSprints);
 
     }//cierra el for em m
     resultadoSatisfactionXsede=sumaSatisfactionAllSede/contRatingSprints;
-    console.log("promedio de satisfaccion"+resultadoSatisfactionXsede);
+    //console.log("promedio de satisfaccion"+resultadoSatisfactionXsede);
     percentAllPointsTeacher=sumAllRatingTeacher/contRatingSprints;
-    console.log("%Promedio de Teacher"+percentAllPointsTeacher);
+    //console.log("%Promedio de Teacher"+percentAllPointsTeacher);
     percentAllPointsJedi=sumAllRatingJedi/contRatingSprints;
-    console.log("%Promedio de Jedi"+percentAllPointsJedi);
+    //console.log("%Promedio de Jedi"+percentAllPointsJedi);
 
 }//cierra la Funcion SedeGenerals*/
 
@@ -217,3 +227,5 @@ function openTab(evt, sedeName) {
     evt.currentTarget.className += " active";
 }
 //************ Funcion Tabs TERMINA *************
+
+/******************************GRAFICANDO********************* */
