@@ -9,9 +9,23 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+    var nameSede=getParameterByName('sede');
+    var sede = data[nameSede];
+    if(nameSede=='AQP'){
+        nameSede='AREQUIPA';
+    }else if(nameSede=="CDMX"){
+        nameSede='CIUDAD DE MEXICO';
+        }else if(nameSede=='SCL'){
+            nameSede='SANTIAGO DE CHILE';
+            }else{
+                nameSede='LIMA';
+            }
 
-var sede = data[getParameterByName('sede')];
-//console.log(sede);
+    //************IMPRIMIENDO EL NOMBRE DE LA SEDE EN EL HTML */
+    var principalTitle=document.getElementById('sede-name');
+    var contentTitle=document.createTextNode(nameSede);
+    principalTitle.appendChild(contentTitle);
+
 
 //*************DETERMINANDO GENERALES POR SEDE*********************
 
@@ -48,6 +62,8 @@ var sedeGenerals=function(){
         var sumPointsAllSprintsTech=0;
         var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
         newObjtInfo.name=studentInfo['name'];
+        //console.log(newObjtInfo);
+        //console.log(studentInfo);
         if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
             sumActiveStudents+=1; //se suman estudiantes Activas.
             if(studentInfo.sprints){ // Se especifica que cuando entre a la llave sprints del Objeto que se encuentra dentro de la variable studentInfo haga lo que sigue
@@ -57,7 +73,7 @@ var sedeGenerals=function(){
                 goalPointsTech=1260*arraySprints.length;
                 for(var f=0; f<arraySprints.length;f++){
                     var obcjetSprintNumber=arraySprints[f];
-                //console.log(obcjetSprintNumber);
+                    //console.log(obcjetSprintNumber);
                     var obcjetsPoints=obcjetSprintNumber['score'];
                     var pointsTech=obcjetsPoints['tech'];
                     var pointsHse=obcjetsPoints['hse'];
@@ -72,7 +88,7 @@ var sedeGenerals=function(){
             //console.log( sumPointsAllSprints);
             //console.log(newObjtInfo);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
-            //console.log(arrayStudentResults);
+            
             if(sumPointsAllSprints>=goalPoints){ //determinando la cantidad de alumnas que superan la meta del 70 %
                 approveGoal++;
                 studentsApprovedGoal.push(newObjtInfo.name);//agregando los nombres de las alumnas que superan la meta un arreglo 
@@ -80,16 +96,16 @@ var sedeGenerals=function(){
             }else{ // determinando cantidad de alumnas que no superan la meta del 70% y sus nombres
                 notApprovedGoal++;
                 studentsNotApprovedGoal.push(newObjtInfo.name); // agregando los nombres de las alumnas que no cumplieron con la meta del 70%
-                console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
+                //console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
 
             }// cierra el else que determina la cantidad la cantidad de alumnas que no cumplen la meta 
             if(sumPointsAllSprintsHse>=goalPointsHse){
                 numberStudentsApprovedHse++;
-                console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
+                //console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
             }//cierra if de points HSE 
             if(sumPointsAllSprintsTech>=goalPointsTech){
                 numberStudentsApprovedTech++;
-                console.log("los puntos que superan la meta son"+sumPointsAllSprintsTech);
+                //console.log("los puntos que superan la meta son"+sumPointsAllSprintsTech);
             }
 
         }else{//Se obtiene el Nombre y la Cantidad de Alumnas Inactivas 
@@ -103,13 +119,41 @@ var sedeGenerals=function(){
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
         }//cierra el else de incativas 
     }//cierra for en i
-    console.log(numberStudentsApprovedHse);
-    console.log(numberStudentsApprovedTech);
+    console.log(arrayStudentResults[0][1]);
+
     var totalStudentSede=(arrayStudents.length);
     var percentajeSuccesStudents=(approveGoal/ sumActiveStudents)*100;
     percentajeSuccesStudents=Math.round(percentajeSuccesStudents);
+    var percentajeStudentsApprovedTech=Math.round((numberStudentsApprovedTech/sumActiveStudents)*100);
+    var percentajeStudentsApproveHse=Math.round((numberStudentsApprovedHse/sumActiveStudents)*100);
+    var totalStudentSede=arrayStudents.length;
 
-    //***********************************IMPRIMIENDO EN HTML LOS RESULTADOS DE ALUMNAS QUE SUPERAN META */
+    //************************IMPRIMIENTO EN HATML LOS RESULTADOS DE ALUMAS QUE SUPERAN LA META EN HSE Y TECH************************************** */
+    var containerResultTech =document.getElementById('title-numberTech');
+    var containernumberStudentsTech=document.getElementById('title-numberTech');
+    var containerResultHse=document.getElementById('AlumnasApproved-Hse');
+    var containernumberStudentsHse=document.getElementById('title-numberHse');
+    var containerPercentStudentsTech=document.getElementById('title-percentTech');
+    var containerPercentStudentsHse=document.getElementById('title-percentHse');
+    var containervaluePointsTech=document.createElement('p');
+    var continerpercentPointsTech=document.createElement('p');
+    var containervaluePointsHse=document.createElement('p');
+    var containerPercentPointsHse=document.createElement('p');
+    var valuePointsTech=document.createTextNode(numberStudentsApprovedTech);
+    var valuePorcentTech=document.createTextNode(percentajeStudentsApprovedTech);
+    var valuePointsHse=document.createTextNode(numberStudentsApprovedHse);
+    var valuePorcentHse=document.createTextNode(percentajeStudentsApproveHse);
+    containervaluePointsTech.appendChild( valuePointsTech);
+    containernumberStudentsTech.appendChild(containervaluePointsTech);
+    containervaluePointsHse.appendChild(valuePointsHse);
+    containernumberStudentsHse.appendChild( containervaluePointsHse);
+    continerpercentPointsTech.appendChild(valuePorcentTech);
+    containerPercentPointsHse.appendChild( valuePorcentHse);
+    containerPercentStudentsTech.appendChild(continerpercentPointsTech);
+    containerPercentStudentsHse.appendChild(containerPercentPointsHse);
+
+
+    //***********************************IMPRIMIENDO EN HTML LOS RESULTADOS DE ALUMNAS QUE SUPERAN META DE TODOS LOS PUNTOS */
     var numSuccesStudents=document.getElementById('AlumnasApproved-NotApproved');
     var titleContainerSucces=document.getElementById('title-numberSucces');
     var titleContainerPercentSucces=document.getElementById('title-percentSucces')
@@ -123,9 +167,7 @@ var sedeGenerals=function(){
     titleContainerPercentSucces.appendChild(containerPercentStudensCant);
     numSuccesStudents.appendChild(titleContainerSucces);
     numSuccesStudents.appendChild(titleContainerPercentSucces);
-    console.log(arrayStudentsInactives);
-    //console.log(arrayStudentResults);
-    var totalStudentSede=arrayStudents.length;
+
 
 
     //*****************************AÑADIENDO ALUMNAS ACTIVAS E INACTIVAS********** */
@@ -145,9 +187,23 @@ var sedeGenerals=function(){
     containerRow.appendChild(containerActivesStudents);
     containerRow.appendChild(containerInactivesStudents);
     containerTableActivesInactives.appendChild(containerRow);
+
+    //***************************IMPRIMIENDO EN HTML EN LA TABS ESTUDIANTES LAS ALUMNAS ACTIVAS********* */
+    var containerActiveTabsStudents=document.getElementById('active-studens');
+    var containerTabStudentsActive=document.createElement('p');
+    var valueTabsStudentsActive=document.createTextNode(sumActiveStudents);
+    containerTabStudentsActive.appendChild(valueTabsStudentsActive);
+    containerActiveTabsStudents.appendChild(containerTabStudentsActive);
     //containerStudentsActivesInactives.replaceChild(containerInactivesStudents);
 
-    //CALCULANDO LOS PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS
+    //*************************IMPRIMIENDO LOS PERFILES DE LAS ALUMNAS EN HTML (TAB ESTUDIANTES) */
+
+    //var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
+    //var createDivProfileStudent=document.createElement('div');
+    //var valueNamePoints=document.createTextNode(arrayStudentsResults);
+
+
+    //******************* PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS GRAFICACION*******************
     // Load the Visualization API and the corechart packages
 
     google.charts.load('current', {'packages':['corechart']});
@@ -236,12 +292,34 @@ var sedeGenerals=function(){
     }//cierra el for em m
     resultadoSatisfactionXsede=sumaSatisfactionAllSede/contRatingSprints;
     //console.log("promedio de satisfaccion"+resultadoSatisfactionXsede);
-    percentAllPointsTeacher=sumAllRatingTeacher/contRatingSprints;
+    percentAllPointsTeacher=Math.round(sumAllRatingTeacher/contRatingSprints);
     //console.log("%Promedio de Teacher"+percentAllPointsTeacher);
-    percentAllPointsJedi=sumAllRatingJedi/contRatingSprints;
+    percentAllPointsJedi=Math.round(sumAllRatingJedi/contRatingSprints);
     //console.log("%Promedio de Jedi"+percentAllPointsJedi);
 
+
+      //*****************IMPRIMIENDO EN HTML EL % DE SATISFACCION POR SEDE  ********************
+    var containerSatisfactionPercent=document.getElementById('containerPercetSatisfaction');
+    var valuePorcentSatisfaction=document.createTextNode(resultadoSatisfactionXsede);
+    containerSatisfactionPercent.appendChild(valuePorcentSatisfaction);
+
+    //********************IMPRIMIENDO EN HTML EL % PROMEDIO DE TEACHERS */
+    var containerTeacher=document.getElementById('pointsPromTeachers');
+    var valuePointsTeacher=document.createTextNode(percentAllPointsTeacher);
+    containerTeacher.appendChild(valuePointsTeacher);
+
+    //********************IMPRIMIENDO EN HTML EL % PROMEDIO JEDI */
+    var containerJedi=document.getElementById('pointsPromJedi');
+    var valuePointsJedi=document.createTextNode(percentAllPointsJedi);
+    containerJedi.appendChild(valuePointsJedi);
+
+
+
+
+    
 }//cierra la Funcion SedeGenerals*/
+
+
 
 
 /**************SE CREA EL FILTRO PRINCIPAL POR GENERACIONES**********************/

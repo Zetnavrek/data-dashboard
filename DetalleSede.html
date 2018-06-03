@@ -11,6 +11,7 @@
     <!--header a ver si sube los cambios-->
       <header>
           <img id="logo-venues" src="assets/images/Labo.jpg" alt="">
+          <div id="sede-name"></div>
           <div>
             <img id="avatar-venues" src="assets/images/avatar.jpg" alt="">
             <!--Seccion de Filtros de Generacion y Turno -->
@@ -50,21 +51,35 @@
             <div id="listado-name-inactive">ALUMNAS INACTIVAS</div>
             <div id="chart_div"></div>
             <div id="AlumnasApproved-NotApproved">ALUMNAS EXITOSAS
-              <p id="title-numberSucces">CANTIDAD</p>   
-              <P id="title-percentSucces">PORCENTAJE</P>
+              <p id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</p>   
+              <P id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</P>
             </div>
             <div id="AlumnasApproved-Tech">RESULTADOS TECNICOS
-              <p id="title-numberTech">CANTIDAD</p>   
-              <P id="title-percentTech">PORCENTAJE</P>
+              <p id="title-numberTech">CANTIDAD DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</p>   
+              <P id="title-percentTech">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</P>
             </div>
             <div id="AlumnasApproved-Hse">HSE 
-              <p id="title-numberHse">CANTIDAD</p>   
-              <P id="title-percentHse">PORCENTAJE</P>
+              <p id="title-numberHse">CANTIDAD ALMUNAS QUE SUPERARON LA META EN HSE</p>   
+              <P id="title-percentHse">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</P>
             </div>
-          </div>    
+            <div id="percentSatisfaction" >PORCENTAJE DE ESTUDIANTES SATISFECHAS 
+              <p id="containerPercetSatisfaction"></p>
+            </div>
+            <div id="pointsPromTeachers" >PUNTOS PROMEDIO TEACHERS
+                <p id="containerPointsTeachers"></p>
+              </div>
+            <div id="pointsPromJedi" >PUNTOS PROMEDIO JEDI
+                <p id="containerPointsJedi"></p>
+            </div>
+          </div> 
+        </div>   
         <div id="Estudiantes" class="tabcontent">
           <h3>Estudiantes</h3>
-          <p></p>
+          <p>ALUMNAS ACTIVAS</p>
+            <p id='active-studens'>
+            </p>
+          <div id="containerAllprofileStudents">
+          </div>
         </div>
         <div id="Laboratorians" class="tabcontent">
           <h3>Laboratorians</h3>
