@@ -38,7 +38,8 @@ var sedeGenerals=function(){
     var goalPointsHse=0;
     var goalPointsTech=0;
     var arrayStudentsInactives=[];
-    
+    var numberStudentsApprovedHse=0;
+    var numberStudentsApprovedTech=0;
 
     for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
         var sumPointsAllSprints=0;
@@ -54,7 +55,6 @@ var sedeGenerals=function(){
                 goalPoints=2100*arraySprints.length;//se obtiene el valor de puntos requeridos para superar el 70% de todos los sprints
                 goalPointsHse=840*arraySprints.length;
                 goalPointsTech=1260*arraySprints.length;
-                //console.log("los puntos meta son:"+goalPoints);
                 for(var f=0; f<arraySprints.length;f++){
                     var obcjetSprintNumber=arraySprints[f];
                 //console.log(obcjetSprintNumber);
@@ -72,27 +72,29 @@ var sedeGenerals=function(){
             //console.log( sumPointsAllSprints);
             //console.log(newObjtInfo);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
-            
+            //console.log(arrayStudentResults);
             if(sumPointsAllSprints>=goalPoints){ //determinando la cantidad de alumnas que superan la meta del 70 %
                 approveGoal++;
-                //console.log("aluma aprbada"+approveGoal);
                 studentsApprovedGoal.push(newObjtInfo.name);//agregando los nombres de las alumnas que superan la meta un arreglo 
                 //console.log("Nombres de estudiantes aprobadas" + studentsApprovedGoal);
-            }else{ // determinando cantidad de alumnas que no superan la meta del 70%
+            }else{ // determinando cantidad de alumnas que no superan la meta del 70% y sus nombres
                 notApprovedGoal++;
-                //console.log("aluma no aprobada"+notApprovedGoal);
                 studentsNotApprovedGoal.push(newObjtInfo.name); // agregando los nombres de las alumnas que no cumplieron con la meta del 70%
-                //console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
+                console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
 
             }// cierra el else que determina la cantidad la cantidad de alumnas que no cumplen la meta 
             if(sumPointsAllSprintsHse>=goalPointsHse){
-                //console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
-            }else{}
+                numberStudentsApprovedHse++;
+                console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
+            }//cierra if de points HSE 
+            if(sumPointsAllSprintsTech>=goalPointsTech){
+                numberStudentsApprovedTech++;
+                console.log("los puntos que superan la meta son"+sumPointsAllSprintsTech);
+            }
 
         }else{//Se obtiene el Nombre y la Cantidad de Alumnas Inactivas 
             arrayStudentsInactives.push(newObjtInfo.name);
             var nameListInactive=newObjtInfo.name;
-            console.log(nameListInactive);
             var containerListNameInactive=document.getElementById('listado-name-inactive');
             var nameList=document.createElement('div');
             var valueNameList=document.createTextNode(nameListInactive);
@@ -101,11 +103,27 @@ var sedeGenerals=function(){
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
         }//cierra el else de incativas 
     }//cierra for en i
-    console.log(arrayStudentsInactives);
-    console.log(arrayStudentResults);
-    var totalStudentSede=arrayStudents.length;
+    console.log(numberStudentsApprovedHse);
+    console.log(numberStudentsApprovedTech);
+    var totalStudentSede=(arrayStudents.length);
+    var percentajeSuccesStudents=(approveGoal/ sumActiveStudents)*100;
+    percentajeSuccesStudents=Math.round(percentajeSuccesStudents);
 
-   
+    //***********************************IMPRIMIENDO EN HTML LOS RESULTADOS DE ALUMNAS QUE SUPERAN META */
+    var numSuccesStudents=document.getElementById('AlumnasApproved-NotApproved');
+    var titleContainerSucces=document.getElementById('title-numberSucces');
+    var titleContainerPercentSucces=document.getElementById('title-percentSucces')
+    var containerSuccesStudensCant=document.createElement('h3');
+    var containerPercentStudensCant=document.createElement('h3');
+    var valueNumberStudentsSucces=document.createTextNode(approveGoal);
+    var valuePercentajeStudentSuces=document.createTextNode(percentajeSuccesStudents);
+    containerSuccesStudensCant.appendChild(valueNumberStudentsSucces);
+    containerPercentStudensCant.appendChild(valuePercentajeStudentSuces);
+    titleContainerSucces.appendChild(containerSuccesStudensCant);
+    titleContainerPercentSucces.appendChild(containerPercentStudensCant);
+    numSuccesStudents.appendChild(titleContainerSucces);
+    numSuccesStudents.appendChild(titleContainerPercentSucces);
+
 
     //*****************************AÑADIENDO ALUMNAS ACTIVAS E INACTIVAS********** */
     var containerTableActivesInactives=document.getElementById('containerTable');
@@ -155,10 +173,7 @@ var sedeGenerals=function(){
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
         }
-    var percentActive=(sumActiveStudents/arrayStudents.length)*100;
-    var percentInactive=(sumInactiveStudents/arrayStudents.length)*100;
-    //console.log(percentActive);
-    //console.log(percentInactive);
+
 
     //*****************CALCULANDO CANTIDAD Y % DE ACEPTACION */ y DETERMINANDO LOS PUNTOS DE TEACHERS Y JEDIS
     var arrayRantings=objContentGeneration['ratings'];
