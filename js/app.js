@@ -123,6 +123,9 @@ var sedeGenerals=function(){
     titleContainerPercentSucces.appendChild(containerPercentStudensCant);
     numSuccesStudents.appendChild(titleContainerSucces);
     numSuccesStudents.appendChild(titleContainerPercentSucces);
+    console.log(arrayStudentsInactives);
+    //console.log(arrayStudentResults);
+    var totalStudentSede=arrayStudents.length;
 
 
     //*****************************AÑADIENDO ALUMNAS ACTIVAS E INACTIVAS********** */
@@ -145,9 +148,11 @@ var sedeGenerals=function(){
     //containerStudentsActivesInactives.replaceChild(containerInactivesStudents);
 
     //CALCULANDO LOS PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS
+    // Load the Visualization API and the corechart packages
+
     google.charts.load('current', {'packages':['corechart']});
 
-        // Set a callback to run when the Google Visualization API is loaded.
+        //Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawChart);
 
         // Callback that creates and populates a data table,
@@ -165,9 +170,12 @@ var sedeGenerals=function(){
         ]);
 
         // Set chart options
-        var options = {'title':'Porcentaje de estudiantes Activas y No Activas',
-                        'width':400,
-                        'height':300};
+        var options = {'title':'Porcentaje de estudiantes Activas e Inactivas',
+                        'is3D':true,
+                        'width':450,
+                        'height':350,
+                        'colors': ['#56F89A', '#FFE521']
+                    };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));

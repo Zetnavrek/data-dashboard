@@ -227,7 +227,7 @@ a{
 
 /* crea un activo a la clase tracklink actual pinta de gris al boton cliqueado */
 .tab button.active {
-    background-color: #ccc;
+    background-color: rgb(184, 184, 184);
     border-radius: 10px;
 }
 
@@ -262,9 +262,43 @@ a{
 }
 
 #chart_div {
-    border: 1px solid green;
+    
     position: relative;
     display: inline-block;
     left: 60%;
-    bottom: 150px;
+    bottom: 300px;
+}
+
+#all {
+    font-family: 'Tajawal', sans-serif;
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+    left:37%;
+    color: rgb(100, 99, 99);
+}
+
+#brackets {
+    height: 100px;
+    width: 110px;
+    position: relative;
+    display: inline-block;
+    
+}
+
+#container-venue-Sede {
+    font-family: "Kaffeesatz, sans-serif";
+    font-size: 24px;
+    text-align: center;
+}
+
+#containerTable {
+    font-family: "Kaffeesatz, sans-serif";
+    padding:10px 20px;
+    margin: 3%;
+    color: rgb(100, 99, 99);
+}
+
+#containerTable>td, #containerTable>th {
+    border: 1px solid #ddd;
 }
