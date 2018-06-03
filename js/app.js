@@ -62,6 +62,7 @@ var sedeGenerals=function(){
         var sumPointsAllSprintsTech=0;
         var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
         newObjtInfo.name=studentInfo['name'];
+        newObjtInfo.photo=studentInfo['photo'];
         //console.log(newObjtInfo);
         //console.log(studentInfo);
         if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
@@ -107,6 +108,15 @@ var sedeGenerals=function(){
                 numberStudentsApprovedTech++;
                 //console.log("los puntos que superan la meta son"+sumPointsAllSprintsTech);
             }
+            var items = [
+                [1, 2],
+                [3, 4],
+                [5, 6]
+                ];
+    
+            var percentAllSprintXstudent= (sumPointsAllSprints*100)/(3000*arraySprints.length);
+            printProfileStudents(newObjtInfo.name,newObjtInfo.photo,sumPointsAllSprints,percentAllSprintXstudent,items);
+        
 
         }else{//Se obtiene el Nombre y la Cantidad de Alumnas Inactivas 
             arrayStudentsInactives.push(newObjtInfo.name);
@@ -117,9 +127,10 @@ var sedeGenerals=function(){
             nameList.appendChild(valueNameList);
             containerListNameInactive.appendChild(nameList);
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
-        }//cierra el else de incativas 
+        }//cierra el else de incativas
+        
     }//cierra for en i
-    console.log(arrayStudentResults[0][1]);
+    //console.log(arrayStudentResults[0][1]);
 
     var totalStudentSede=(arrayStudents.length);
     var percentajeSuccesStudents=(approveGoal/ sumActiveStudents)*100;
@@ -196,11 +207,7 @@ var sedeGenerals=function(){
     containerActiveTabsStudents.appendChild(containerTabStudentsActive);
     //containerStudentsActivesInactives.replaceChild(containerInactivesStudents);
 
-    //*************************IMPRIMIENDO LOS PERFILES DE LAS ALUMNAS EN HTML (TAB ESTUDIANTES) */
-
-    //var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
-    //var createDivProfileStudent=document.createElement('div');
-    //var valueNamePoints=document.createTextNode(arrayStudentsResults);
+   
 
 
     //******************* PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS GRAFICACION*******************
@@ -319,8 +326,89 @@ var sedeGenerals=function(){
     
 }//cierra la Funcion SedeGenerals*/
 
+ //*************************IMPRIMIENDO LOS PERFILES DE LAS ALUMNAS EN HTML (TAB ESTUDIANTES) */
+
+    
+    //var valueNamePoints=document.createTextNode(arrayStudentsResults);
+
+    var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arregloSprints){
+
+    var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
+    var containerProfileStudent=document.getElementById('profileStudent');
+    var containerProfileSuperiorStudents=document.getElementById('containerProfileSuperior');
+    var containerProfileInferiorStudents=document.getElementById('containerProfileInferior');
+    var createDivProfileStudent=document.createElement('div');
+    var parrafoName=document.createElement('p');
+    var imageProfile=document.createElement('img');
+    imageProfile.setAttribute('href',img);
+    var divContianerPointsTotals=document.createElement('div');
+    var parrafPointsTotals=document.createElement('p');
+    var parrafPercentTotalPoints=document.createElement('p');
+    var tableContainerSprints=document.createElement('table');
+    var continerLineTitle=document.createElement('tr');
+    var sprintNumber=document.createElement('th');
+    var nameTech=document.createElement('th');
+    var nameHse=document.createElement('th');
+    nameHse.textContent="PUNTOS HSE";
+    nameTech.textContent="PUNTOS TECH";
+    sprintNumber.textContent="SPRINT"
+    var valueParrafoName=document.createTextNode(name);
+    //var valueParrafoImage=document.createTextNode(img);
+    var valueTotalAllPoints=document.createTextNode(totalPoints);
+    var valuePercentTotalPoints=document.createTextNode(percentAllSprints+'%');
+    parrafoName.appendChild(valueParrafoName);
+    //imageProfile.appendChild(valueParrafoimage);
+    containerProfileSuperiorStudents.appendChild(imageProfile);
+    containerProfileSuperiorStudents.appendChild(parrafoName);
+    profileStudent.appendChild(containerProfileSuperiorStudents);
+    containerAllProfileStudent.appendChild(profileStudent);
+
+    parrafPointsTotals.appendChild(valueTotalAllPoints);
+    parrafPercentTotalPoints.appendChild(valuePercentTotalPoints);
+
+    divContianerPointsTotals.appendChild(parrafPointsTotals);
+    divContianerPointsTotals.appendChild(parrafPercentTotalPoints);
+
+    containerProfileInferiorStudents.appendChild(divContianerPointsTotals);
+    profileStudent.appendChild(containerProfileInferiorStudents);
+    containerAllProfileStudent.appendChild(profileStudent);
+
+    continerLineTitle.appendChild(sprintNumber);
+    continerLineTitle.appendChild(nameTech);
+    continerLineTitle.appendChild(nameHse);
+    tableContainerSprints.appendChild(continerLineTitle);
+
+    for(var i=0; i<arregloSprints.length; i++){
+        var containerLineTitle2=document.createElement('tr');
+        var sprintNumber2=document.createElement('td');
+        var nameTech2=document.createElement('td');
+        var nameHse2=document.createElement('td');
+        var sprintNumberValue=document.createTextNode(i+1);
+        var sprintValueTech=document.createTextNode(arregloSprints[i][0]);
+        var sprintValueHse=document.createTextNode(arregloSprints[i][1]);
+        sprintNumber2.appendChild(sprintNumberValue);
+        nameTech2.appendChild(sprintValueTech);
+        nameHse2.appendChild(sprintValueHse);
+        containerLineTitle2.appendChild(sprintNumber2);
+        containerLineTitle2.appendChild(nameTech2);
+        containerLineTitle2.appendChild(nameHse2);
+        tableContainerSprints.appendChild(containerLineTitle2);
+    }
+    containerProfileInferiorStudents.appendChild(tableContainerSprints);
+    profileStudent.appendChild(containerProfileInferiorStudents);
+    containerAllProfileStudent.appendChild(profileStudent);
 
 
+
+}//Cierra la Funcion PrintProfileStudents
+
+var items = [
+    [1, 2],
+    [3, 4],
+    [5, 6]
+    ];
+
+printProfileStudents("lizz","http://dummyimage.com/162x148.png/ff4444/ffffff",30,80,items);
 
 /**************SE CREA EL FILTRO PRINCIPAL POR GENERACIONES**********************/
 var select=document.getElementById('generationFilter');
