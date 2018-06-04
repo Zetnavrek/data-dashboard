@@ -48,12 +48,13 @@
                 <th>Alumnas Inactivas</th>
               </tr>
             </table>
-            <div id="listado-name-inactive">ALUMNAS INACTIVAS</div>
+            <!--<div>ALUMNAS INACTIVAS</div>-->
+            <button class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
             <div id="chart_div"></div>
             <div id="AlumnasApproved-NotApproved">ALUMNAS EXITOSAS
               <p id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</p>   
               <P id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</P>
-            </div>
+            </div>  
             <div id="AlumnasApproved-Tech">RESULTADOS TECNICOS
               <p id="title-numberTech">CANTIDAD DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</p>   
               <P id="title-percentTech">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</P>
@@ -79,23 +80,37 @@
             <p id='active-studens'>
             </p>
           <div id="containerAllprofileStudents">
-            <div id="profileStudent">
-              <div id="containerProfileSuperior"></div>
-              <div id="containerProfileInferior"></div>
-            </div>
-            </div>
         </div>
-        <div id="Laboratorians" class="tabcontent">
+      </div>
+      <div id="Laboratorians" class="tabcontent">
           <h3>Laboratorians</h3>
-          <p></p>
-        </div>
+          <div id="containerAllprofileLaboratorians" >
+            <div id="containerTeachers"class="formatContainerTeachers">TEACHERS</div>
+            <div id="containerJedi" class="formatcontainerJedis">JEDI</div>
+          </div>
+      </div>  
     </section>
+    <div id="listado-name-inactive" class="format-modal">
+        <button class="tablinks" onclick="ocultarVentana()">CERRAR</button>
+    </div>
     </main>
     <!-- Base de datos -->
 		<script src="./js/data.js"></script>
 		<!-- Aquí va tus archivos JS -->
     <script src="./js/app.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  
+    <script>
+      function mostrarVentana(){
+        var ventana = document.getElementById('listado-name-inactive');
+        ventana.style.marginTop = "100px";
+        ventana.style.left = ((document.body.clientWidth-350) / 2) +  "px";
+        ventana.style.display = 'block';
+      }
+
+      function ocultarVentana(){
+        var ventana = document.getElementById('listado-name-inactive');
+        ventana.style.display = 'none';
+      }
+    </script>
   </body>
 </html>
