@@ -428,16 +428,21 @@ a{
 }
 
 #pointsPromJedi{
-    border: 1px solid black;
-
     border: 1px solid #ddd;
 }
 
 /**************************FORMATOS DE LOS PERFILES STUDENTS *************************/
 
 .formatProfileStudents{
-    border: 1px solid black;
-    margin:5%;
+    border: 3px solid rgb(153, 153, 153);
+    width: 50%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    margin: 3%;
 }
 
 /*************************FORMATOS PERFILES LABORATORIAS***********************/
