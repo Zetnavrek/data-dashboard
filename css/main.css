@@ -433,18 +433,47 @@ a{
 
 /**************************FORMATOS DE LOS PERFILES STUDENTS *************************/
 
-.formatProfileStudents{
+.formatContainerAllProfile{
     border: 3px solid rgb(153, 153, 153);
-    width: 50%;
+    width: 70%;
     height: auto;
     display: inline-block;
     position: relative;
     font-family: "Kaffeesatz", sans-serif;
-    text-align: center;
+    text-align: left;
     border-radius: 2px;
     margin: 3%;
 }
+.formatProfileStudents{
+    outline: 1px solid green;
+    width:50%
+}
 
+.formatProfileSuperior{
+    font-family: "Kaffeesatz", sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+    outline: 1px solid black;
+    width:50%;
+}  
+.formatProfileInferior{
+    font-family: "Kaffeesatz", sans-serif;
+    outline: 1px solid red;
+    width:50%;
+}
+.formatGraphicSprints{
+    border: 3px solid rgb(153, 153, 153);
+    width: 40%;
+    display: inline-block;
+    position:relative;
+    left:500px;
+    bottom: 400px;
+    height: inherit;
+    /*float: right;*/
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+}
 /*************************FORMATOS PERFILES LABORATORIAS***********************/
 .formatContainerTeachers{
     border:1px solid black;

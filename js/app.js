@@ -1,3 +1,5 @@
+google.charts.load('current', {'packages':['bar']});
+
 
 //************FUNCION PARA EL QUERY-STRING.**********
 function getParameterByName(name, url) {
@@ -124,6 +126,8 @@ var sedeGenerals=function(){
         
     }//cierra for en i
     //console.log(arrayStudentResults[0][1]);
+ 
+    //Determinando total de estudiantes sede, porcentajes total aprobadas, total Tech y total Hse. 
 
     var totalStudentSede=(arrayStudents.length);
     var percentajeSuccesStudents=(approveGoal/ sumActiveStudents)*100;
@@ -144,9 +148,9 @@ var sedeGenerals=function(){
     var containervaluePointsHse=document.createElement('p');
     var containerPercentPointsHse=document.createElement('p');
     var valuePointsTech=document.createTextNode(numberStudentsApprovedTech);
-    var valuePorcentTech=document.createTextNode(percentajeStudentsApprovedTech);
+    var valuePorcentTech=document.createTextNode(percentajeStudentsApprovedTech+'%');
     var valuePointsHse=document.createTextNode(numberStudentsApprovedHse);
-    var valuePorcentHse=document.createTextNode(percentajeStudentsApproveHse);
+    var valuePorcentHse=document.createTextNode(percentajeStudentsApproveHse+'%');
     containervaluePointsTech.appendChild( valuePointsTech);
     containernumberStudentsTech.appendChild(containervaluePointsTech);
     containervaluePointsHse.appendChild(valuePointsHse);
@@ -164,7 +168,7 @@ var sedeGenerals=function(){
     var containerSuccesStudensCant=document.createElement('h3');
     var containerPercentStudensCant=document.createElement('h3');
     var valueNumberStudentsSucces=document.createTextNode(approveGoal);
-    var valuePercentajeStudentSuces=document.createTextNode(percentajeSuccesStudents);
+    var valuePercentajeStudentSuces=document.createTextNode(percentajeSuccesStudents+'%');
     containerSuccesStudensCant.appendChild(valueNumberStudentsSucces);
     containerPercentStudensCant.appendChild(valuePercentajeStudentSuces);
     titleContainerSucces.appendChild(containerSuccesStudensCant);
@@ -237,7 +241,7 @@ var sedeGenerals=function(){
         }
 
     /*****************************SE GRAFICAN PORCENTAJES HSE Y TECNICO ********************/
-    google.charts.load('current', {'packages':['bar']});
+    //google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawStuff);
 
     function drawStuff() {
@@ -334,7 +338,7 @@ var sedeGenerals=function(){
 
       //*****************IMPRIMIENDO EN HTML EL % DE SATISFACCION POR SEDE  ********************
     var containerSatisfactionPercent=document.getElementById('containerPercetSatisfaction');
-    var valuePorcentSatisfaction=document.createTextNode(resultadoSatisfactionXsede);
+    var valuePorcentSatisfaction=document.createTextNode(resultadoSatisfactionXsede+'%');
     containerSatisfactionPercent.appendChild(valuePorcentSatisfaction);
 
     //********************IMPRIMIENDO EN HTML EL % PROMEDIO DE TEACHERS */
@@ -353,13 +357,22 @@ var sedeGenerals=function(){
  //*************************IMPRIMIENDO LOS PERFILES DE LAS ALUMNAS EN HTML (TAB ESTUDIANTES) */
 
 
-    var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arregloSprints){
+var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arregloSprints){
+        //google.charts.load('current', {'packages':['corechart']});
 
     var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
+    var containerDataAndGraphics=document.createElement('div');
+    containerDataAndGraphics.setAttribute('class','formatContainerAllProfile');
     var containerProfileStudent=document.createElement('div');
     containerProfileStudent.setAttribute('class','formatProfileStudents');
+    var containerGraphicSprints=document.createElement('div');
+    containerGraphicSprints.setAttribute('id','graphicStundesProfile');
+    containerGraphicSprints.setAttribute('class','formatGraphicSprints');
+    containerGraphicSprints.textContent="GRAFICO";
     var containerProfileSuperiorStudents=document.createElement('div');
+    containerProfileSuperiorStudents.setAttribute('class','formatProfileSuperior');
     var containerProfileInferiorStudents=document.createElement('div');
+    containerProfileInferiorStudents.setAttribute('class','formatProfileInferior');
     var createDivProfileStudent=document.createElement('div');
     var parrafoName=document.createElement('p');
     var imageProfile=document.createElement('img');
@@ -368,8 +381,8 @@ var sedeGenerals=function(){
     var divContianerPointsTotals=document.createElement('div');
     var parrafPointsTotals=document.createElement('p');
     var parrafPercentTotalPoints=document.createElement('p');
-    parrafPointsTotals.textContent="PUNTOS TOTALES:      ";
-    parrafPercentTotalPoints.textContent="PORCENTAJE TOTAL:   " + "<br>";
+    parrafPointsTotals.textContent="PUNTOS TOTALES:        ";
+    parrafPercentTotalPoints.textContent="PORCENTAJE TOTAL:     ";
     var tableContainerSprints=document.createElement('table');
     var continerLineTitle=document.createElement('tr');
     var sprintNumber=document.createElement('th');
@@ -398,13 +411,16 @@ var sedeGenerals=function(){
     tableContainerSprints.appendChild(continerLineTitle);
 
     for(var i=0; i<arregloSprints.length; i++){
+        var contGraphic=i+1;
         var containerLineTitle2=document.createElement('tr');
         var sprintNumber2=document.createElement('td');
         var nameTech2=document.createElement('td');
         var nameHse2=document.createElement('td');
         var sprintNumberValue=document.createTextNode(i+1);
         var sprintValueTech=document.createTextNode(arregloSprints[i][0]);
+        var techGraphicPoints=arregloSprints[i][0];
         var sprintValueHse=document.createTextNode(arregloSprints[i][1]);
+        var hseGraphicPoints=arregloSprints[i][1];
         sprintNumber2.appendChild(sprintNumberValue);
         nameTech2.appendChild(sprintValueTech);
         nameHse2.appendChild(sprintValueHse);
@@ -415,9 +431,52 @@ var sedeGenerals=function(){
     }
     containerProfileInferiorStudents.appendChild(tableContainerSprints);
     containerProfileStudent.appendChild(containerProfileInferiorStudents);
-    containerAllProfileStudent.appendChild(containerProfileStudent);
+    containerDataAndGraphics.appendChild(containerProfileStudent);
+    containerDataAndGraphics.appendChild(containerGraphicSprints);
+    drawChartStudentsProfile(arregloSprints,contGraphic,techGraphicPoints,hseGraphicPoints, containerGraphicSprints);
+    containerAllProfileStudent.appendChild(containerDataAndGraphics);
+    //containerAllProfileStudent.appendChild(containerDataAndGraphics);
+
 
 }//Cierra la Funcion PrintProfileStudents
+
+        
+        //Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChartStudentsProfile);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChartStudentsProfile(arregloSprints,contGraphic,techGraphicPoints,hseGraphicPoints,element) {
+
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable([
+            ['Sprints','TECH','HSE'],[contGraphic,techGraphicPoints,hseGraphicPoints]
+        ]);     
+
+
+        // Set chart options
+        var options = {
+            chart:{
+                title:'Puntos por Sprints'
+    
+                }
+            };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.charts.Bar(element);
+        chart.draw(data,google.charts.Bar.convertOptions(options));
+        }
+
+
+
+
+
+
+
+
+
+
 
 /**************IMPRIMIENDO LOS RESULTADOS DE LOS JEDI AND TEACHER EN TABS LABORATORIANS************************ */
 
