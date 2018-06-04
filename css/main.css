@@ -15,10 +15,20 @@ header {
 #logo {
     position:relative;
     display:inline-block;
-    left:40%;
+    left:2%;
     top:15px;
     height: 100px;
     width: 250px;
+}
+
+#hole-title{
+    font-family: 'Lato', sans-serif;
+    font-size: 50px;
+    position:relative;
+    display: inline-block;
+    left:34%;
+    bottom: 36vh;
+    color: rgb(100, 99, 99);
 }
 
 #logo-venues {
