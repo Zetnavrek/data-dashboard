@@ -110,7 +110,6 @@ select {
     left: 20%;
     text-align: center;
     top: 100px;
-    border: 1px solid black;
 }
 
 a{
@@ -316,6 +315,16 @@ a{
     bottom: 10vh;
 }
 
+.container-venue-Sede {
+    font-family: "Kaffeesatz", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 70%;
+    position: relative;
+    left: 15%;
+    bottom: 10vh;
+}
+
 .table {
     position: relative;
     left: 5%;
@@ -346,7 +355,7 @@ a{
     top: 30vh;
 }
 
-#listado-name-inactive{
+/*#listado-name-inactive{
     border: 3px solid rgb(153, 153, 153);
     width: 22%;
     display: inline-block;
@@ -356,7 +365,7 @@ a{
     overflow-y:scroll;
     height: 250px;
 
-}
+}*/
 #containerTable2{
     
     bottom: 10vh;
@@ -419,7 +428,6 @@ a{
 }
 
 #pointsPromJedi{
-    border: 1px solid black;
     border: 1px solid #ddd;
 }
 
@@ -462,4 +470,17 @@ a{
     background-color: #FAFAFA; 
     color: #000000; 
     display:none;
+    overflow-y:scroll;
+}
+
+#active-studens{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#show-window {
+    border: none;
+    padding: 10px;
+    background-color: #ffe923;
+    border-radius: 2px;
 }
