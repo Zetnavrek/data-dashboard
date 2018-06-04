@@ -49,11 +49,11 @@
                 <th>Alumnas Activas</th>
                 <th>Alumnas Inactivas</th>
               </tr>
-            </table>
+              </table>
+              <button id= "show-window"class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
             <div id="chart_div"></div>
-            <button class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
-            <div id="listado-name-inactive"><h3 id= "title-list-inactive">ALUMNAS INACTIVAS</h3></div>
-          </div> 
+            <!--<div id="listado-name-inactive"><h3 id= "title-list-inactive">ALUMNAS INACTIVAS</h3></div>
+          </div> -->
           <div id="AlumnasApproved-Tech" class= "info-compair">
               <div><h3>RESULTADOS NIVEL TECNICO</h3>
               </div>
@@ -70,44 +70,40 @@
                   </div>    
           </div>
           <div id="top_x_div"></div> 
-            
-            
-           
-            
-            
-            
-            <div id="AlumnasApproved-NotApproved">ALUMNAS EXITOSAS
-                <p id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</p>   
-                <P id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</P>
+          <div id="AlumnasApproved-NotApproved" class= "info-compair">ALUMNAS EXITOSAS
+                <h4 id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
+                <h4 id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
               </div>
-            <div id="percentSatisfaction" >PORCENTAJE DE ESTUDIANTES SATISFECHAS 
+            <div id="percentSatisfaction" class= "info-compair" class= "info-compair" >PORCENTAJE DE ESTUDIANTES SATISFECHAS 
               <p id="containerPercetSatisfaction"></p>
             </div>
-            <div id="pointsPromTeachers" >PUNTOS PROMEDIO TEACHERS
+            <div id="pointsPromTeachers"class= "info-compair" >PUNTOS PROMEDIO TEACHERS
                 <p id="containerPointsTeachers"></p>
               </div>
-            <div id="pointsPromJedi" >PUNTOS PROMEDIO JEDI
+            <div id="pointsPromJedi" class= "info-compair" >PUNTOS PROMEDIO JEDI
                 <p id="containerPointsJedi"></p>
             </div>
-          
+          </div>
         </div>   
         <div id="Estudiantes" class="tabcontent">
-          <h3>Estudiantes</h3>
-          <p>ALUMNAS ACTIVAS</p>
-            <p id='active-studens'>
+            <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
+          <h3 id="all">Estudiantes</h3>
+          <p id="container-venue-Sede">ALUMNAS ACTIVAS</p>
+            <p id='active-studens' class= "container-venue-Sede"></p>
             </p>
           <div id="containerAllprofileStudents">
         </div>
       </div>
       <div id="Laboratorians" class="tabcontent">
-          <h3>Laboratorians</h3>
+          <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
+          <h3 id="all">Laboratorians</h3>
           <div id="containerAllprofileLaboratorians" >
             <div id="containerTeachers"class="formatContainerTeachers">TEACHERS</div>
             <div id="containerJedi" class="formatcontainerJedis">JEDI</div>
           </div>
       </div>  
     </section>
-    <div id="listado-name-inactive" class="format-modal">
+    <div id="listado-name-inactive" class="format-modal"><h3 id= "title-list-inactive">Alumnas Inactivas</h3>
         <button class="tablinks" onclick="ocultarVentana()">CERRAR</button>
     </div>
     </main>
