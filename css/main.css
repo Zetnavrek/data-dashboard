@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+
 header {
     background-color:whitesmoke;
     width: 100%;
@@ -14,14 +15,22 @@ header {
 #logo {
     position:relative;
     display:inline-block;
-    left:40%;
+    left:2%;
     top:15px;
     height: 100px;
     width: 250px;
 }
-/*#sede-name{
-    
-}*/
+
+#hole-title{
+    font-family: 'Lato', sans-serif;
+    font-size: 50px;
+    position:relative;
+    display: inline-block;
+    left:34%;
+    bottom: 36vh;
+    color: rgb(100, 99, 99);
+}
+
 #logo-venues {
     position:relative;
     display:inline-block;
@@ -57,13 +66,35 @@ nav {
     bottom: 70px;
 }
 
+#sede-name{
+    background-color: #ffe923;
+    position: relative;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 2px;
+    bottom: 11vh;
+    left: 8%;
+    border: 1px solid #ccc;
+}
+
 select {
     border: none;
+    position: relative;
     border-bottom: 2px solid lightblue;
-    width: 20%;
     height: 30px;
     border-radius: 5px;
+    bottom: 3.5vh;
+}
 
+#generationFilter {
+    width: 20%;
+}
+
+#hour {
+    width: 10%;
 }
 #section1 {
     height: 530px;
@@ -79,7 +110,7 @@ select {
     left: 20%;
     text-align: center;
     top: 100px;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
 }
 
 a{
@@ -87,9 +118,10 @@ a{
     position: relative;
     height: 45px;
     width: 280px;
+    color: rgb(158, 158, 158);
     margin: 1%;
     left: 55%;
-    /*border: 1px solid red;*/
+    border: 1px solid #ccc;
     text-decoration: none;
     bottom: 200px;
     border-radius: 4px;
@@ -101,7 +133,6 @@ a{
 #arequipa {
     background-color: #56F89A;
     padding-top: 0;
-    color:  white;
 }
 
 #arequipa:hover{
@@ -111,8 +142,6 @@ a{
 #lima {
     background-color: #56F89A;
     padding-top: 0; 
-    color:white;
-    
 }
 
 #lima:hover{
@@ -122,7 +151,6 @@ a{
 #gdl {
     background-color: #56F89A;
     padding-top: 0;
-    color:white;
 }
 
 #gdl:hover {
@@ -132,7 +160,6 @@ a{
 #chile {
     background-color: #56F89A;
     padding-top: 0;
-    color:white;
 }
 
 #chile:hover{
@@ -142,7 +169,6 @@ a{
 #cdmx {
     background-color: #56F89A;
     padding-top: 0;
-    color:white;
 }
 
 #cdmx:hover{
@@ -152,7 +178,6 @@ a{
 #brazil {
     background-color:#56F89A;
     padding-top: 0;
-    color: white;
 }
 
 #brazil:hover{
@@ -256,60 +281,160 @@ a{
     top:20%;
 }*/
 
-.table {
-    border: 1px solid blue;
-    position: relative;
-    left: 10%;
-    text-align: center;
-}
-
 #chart_div {
-    
     position: relative;
     display: inline-block;
-    left: 60%;
-    /*bottom: 300px;*/
+    left: 45%;
+    bottom: 10vh;
 }
 
 #all {
     font-family: 'Tajawal', sans-serif;
     position: relative;
     display: inline-block;
-    font-size: 40px;
-    left:37%;
+    font-size: 60px;
+    left:30%;
     color: rgb(100, 99, 99);
+    bottom: 3vh;
 }
 
 #brackets {
     height: 100px;
-    width: 110px;
+    width: 120px;
     position: relative;
     display: inline-block;
-    
+    top:2vh;
 }
 
 #container-venue-Sede {
-    font-family: "Kaffeesatz, sans-serif";
-    font-size: 24px;
+    font-family: "Kaffeesatz", sans-serif;
+    font-size: 20px;
     text-align: center;
+    width: 70%;
+    position: relative;
+    left: 15%;
+    bottom: 10vh;
 }
 
-#containerTable {
-    font-family: "Kaffeesatz, sans-serif";
+.table {
+    position: relative;
+    left: 5%;
+    text-align: center;
+    top: 2vh;
+
+}
+
+#containerTable th {
+    font-family: "Kaffeesatz", sans-serif;
     padding:10px 20px;
     margin: 3%;
-    color: rgb(100, 99, 99);
+    background-color:rgb(187, 186, 186);
 }
 
-#containerTable>td, #containerTable>th {
+#containerTable tr:nth-child(even) {
+    background-color: rgb(226, 225, 225);
+}
+
+
+
+#main-brackets {
+    height: 80px;
+    width: 100px;
+    position: relative;
+    display: inline-block;
+    right: 22%;
+    top: 30vh;
+}
+
+#listado-name-inactive{
+    border: 3px solid rgb(153, 153, 153);
+    width: 22%;
+    display: inline-block;
+    position: relative;
+    bottom: 3vh;
+    right: 28%;
+    overflow-y:scroll;
+    height: 250px;
+
+}
+#containerTable2{
+    
+    bottom: 10vh;
+    width: 100%;
+    left: 10%;
+    position: relative;
+    display: inline-block;
+}
+#title-list-inactive{
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #ccc;
+}
+
+#AlumnasApproved-NotApproved{
+    border: 1px solid black;
+}
+
+.info-compair {
+    border: 3px solid rgb(153, 153, 153);
+    width: 30%;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.info-compair h3 {
+    background-color: rgb(187, 186, 186);
+    height: 100%;
+    padding: 5px 0;
+}
+
+#AlumnasApproved-Tech {
+    left: 20%;
+}
+
+#AlumnasApproved-Hse{
+    left: 20%;
+    
+}
+#top_x_div{
+    display: inline-block;
+    position: relative;
+    left: 30%;
+    top: 3vh;
+}
+
+
+#percentSatisfaction{
+    border: 1px solid black;
+}
+
+#pointsPromTeachers{
+    border: 1px solid black;
+}
+
+#pointsPromJedi{
+    border: 1px solid black;
     border: 1px solid #ddd;
 }
 
 /**************************FORMATOS DE LOS PERFILES STUDENTS *************************/
 
 .formatProfileStudents{
-    border: 1px solid black;
-    margin:5%;
+    border: 3px solid rgb(153, 153, 153);
+    width: 50%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    margin: 3%;
 }
 
 /*************************FORMATOS PERFILES LABORATORIAS***********************/
