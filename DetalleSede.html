@@ -54,13 +54,17 @@
             <div id="chart_div"></div>
             <!--<div id="listado-name-inactive"><h3 id= "title-list-inactive">ALUMNAS INACTIVAS</h3></div>
           </div> -->
+          <div id="AlumnasApproved-NotApproved"> <h3>ALUMNAS EXITOSAS</h3>
+            <h4 id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
+            <h4 id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
+          </div>
           <div id="AlumnasApproved-Tech" class= "info-compair">
               <div><h3>RESULTADOS NIVEL TECNICO</h3>
               </div>
-                  <div>
-                      <h4 id="title-numberTech">Cantidad de Alumnas que superaron la meta</h4>   
-                      <h4 id="title-percentTech">% de alumnas que superaron la meta</h4>
-                  </div>
+              <div>
+                  <h4 id="title-numberTech">Cantidad de Alumnas que superaron la meta</h4>   
+                  <h4 id="title-percentTech">% de alumnas que superaron la meta</h4>
+              </div>
           </div>
           <div id="AlumnasApproved-Hse" class="info-compair">
             <div><h3>RESULTADOS EN HSE</h3></div> 
@@ -69,18 +73,14 @@
                     <h4 id="title-percentHse">%de alumnas que superaron meta HSE</h4>
                   </div>    
           </div>
-          <div id="top_x_div"></div> 
-          <div id="AlumnasApproved-NotApproved" class= "info-compair">ALUMNAS EXITOSAS
-                <h4 id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
-                <h4 id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
-              </div>
-            <div id="percentSatisfaction" class= "info-compair" class= "info-compair" >PORCENTAJE DE ESTUDIANTES SATISFECHAS 
+          <div id="top_x_div"></div>
+            <div id="percentSatisfaction" class= "info-compair">PORCENTAJE DE ESTUDIANTES SATISFECHAS 
               <p id="containerPercetSatisfaction"></p>
             </div>
-            <div id="pointsPromTeachers"class= "info-compair" >PUNTOS PROMEDIO TEACHERS
+            <div id="pointsPromTeachers"class= "points-teachers" >PUNTOS PROMEDIO TEACHERS
                 <p id="containerPointsTeachers"></p>
               </div>
-            <div id="pointsPromJedi" class= "info-compair" >PUNTOS PROMEDIO JEDI
+            <div id="pointsPromJedi" class= "points-jedi" >PUNTOS PROMEDIO JEDI
                 <p id="containerPointsJedi"></p>
             </div>
           </div>
@@ -120,7 +120,6 @@
         ventana.style.left = ((document.body.clientWidth-350) / 2) +  "px";
         ventana.style.display = 'block';
       }
-
       function ocultarVentana(){
         var ventana = document.getElementById('listado-name-inactive');
         ventana.style.display = 'none';

@@ -62,7 +62,7 @@ header {
 nav {
     position: relative;
     display: block;
-    left: 2%;
+    left:0;
     bottom: 70px;
 }
 
@@ -283,8 +283,8 @@ a{
 #chart_div {
     position: relative;
     display: inline-block;
-    left: 45%;
     bottom: 10vh;
+    left:30%;
 }
 
 #all {
@@ -327,7 +327,7 @@ a{
 
 .table {
     position: relative;
-    left: 5%;
+    left: 15%;
     text-align: center;
     top: 2vh;
 
@@ -370,7 +370,6 @@ a{
     
     bottom: 10vh;
     width: 100%;
-    left: 10%;
     position: relative;
     display: inline-block;
 }
@@ -383,7 +382,21 @@ a{
 }
 
 #AlumnasApproved-NotApproved{
-    border: 1px solid black;
+    border: 3px solid rgb(153, 153, 153);
+    width: 30%;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2px;
+    right: 10%;
+    top: 35vh;
+}
+
+#AlumnasApproved-NotApproved h3 {
+    background-color:  rgb(187, 186, 186);
 }
 
 .info-compair {
@@ -395,6 +408,7 @@ a{
     font-family: "Kaffeesatz", sans-serif;
     text-align: center;
     border-radius: 2px;
+    top: 40vh;
 }
 
 .info-compair h3 {
@@ -412,23 +426,61 @@ a{
     
 }
 #top_x_div{
-    display: inline-block;
     position: relative;
-    left: 30%;
-    top: 3vh;
+    left: 33%;
+    top: 40vh;
+    width: 33%;
 }
 
 
 #percentSatisfaction{
-    border: 1px solid black;
+    border: 3px solid rgb(153, 153, 153);
+    width: 25%;
+    height: 100px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top: 50vh;
+    left: 35%;
 }
 
-#pointsPromTeachers{
-    border: 1px solid black;
+#percentSatisfaction p {
+    font-weight: bold;
+    background-color:  rgb(187, 186, 186);
 }
 
-#pointsPromJedi{
-    border: 1px solid #ddd;
+.points-teachers{
+    border: 3px solid rgb(153, 153, 153);
+    width: 20%;
+    height: 90px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top: 90vh;
+}
+.points-teachers p{
+    font-weight: bold;
+    background-color: rgb(187, 186, 186);
+}
+.points-jedi{
+    border: 3px solid rgb(153, 153, 153);
+    width: 20%;
+    height: 90px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top:90vh;
+}
+
+.points-jedi p {
+    font-weight: bold;
+background-color: rgb(187, 186, 186);
 }
 
 /**************************FORMATOS DE LOS PERFILES STUDENTS *************************/
@@ -489,9 +541,9 @@ a{
 .format-modal{
     position: fixed; 
     width: 350px;
-    height: 190px;
-    top: 0; 
-    left: 0; 
+    height: 190px; 
+    top:0;
+    left: 0;
     font-family:Verdana, Arial, Helvetica, sans-serif; 
     font-size: 12px; 
     font-weight: normal; 
@@ -512,4 +564,8 @@ a{
     padding: 10px;
     background-color: #ffe923;
     border-radius: 2px;
+    bottom: 40vh;
+    left: 29%;
+    position: relative;
+    display: inline-block;
 }

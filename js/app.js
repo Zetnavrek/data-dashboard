@@ -253,10 +253,9 @@ var sedeGenerals=function(){
 
         var options = {
             title: 'Comparacion de Alumnas que superan la meta en nivel Tecnico y HSE',
-            width: 600,
-            legend: { position: 'none' },
-            chart: { title: 'Chess opening moves',
-                    subtitle: 'popularity by percentage' },
+            legend: { position: 'relative' },
+            chart: { title: '',
+                    subtitle: 'Porcentaje comparativo' },
             bars: 'horizontal', // Required for Material Bar Charts.
             axes: {
             x: {
