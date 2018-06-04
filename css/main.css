@@ -420,4 +420,40 @@ a{
 
 #pointsPromJedi{
     border: 1px solid black;
+#containerTable>td, #containerTable>th {
+    border: 1px solid #ddd;
+}
+
+/**************************FORMATOS DE LOS PERFILES STUDENTS *************************/
+
+.formatProfileStudents{
+    border: 1px solid black;
+    margin:5%;
+}
+
+/*************************FORMATOS PERFILES LABORATORIAS***********************/
+.formatContainerTeachers{
+    border:1px solid black;
+    margin:5%;
+}
+
+.formatcontainerJedis{
+    border:1px solid black;
+    margin:5%;
+}
+
+/***************************FORMATO DE LA VENTANA MODAL********************/
+.format-modal{
+    position: fixed; 
+    width: 350px;
+    height: 190px;
+    top: 0; 
+    left: 0; 
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    font-weight: normal; 
+    border: #333333 3px solid; 
+    background-color: #FAFAFA; 
+    color: #000000; 
+    display:none;
 }

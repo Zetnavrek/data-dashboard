@@ -54,7 +54,7 @@ var sedeGenerals=function(){
     var arrayStudentsInactives=[];
     var numberStudentsApprovedHse=0;
     var numberStudentsApprovedTech=0;
-
+    var arrayAllSprintsTechAndHse = [];//arreglo 2d para guardar lo puntos x sprint de HSE y TECH 
     for(var i=0; i<arrayStudents.length; i++){ //Se utiliza para recorrer todo el arreglo de las estudiantes.
         var sumPointsAllSprints=0;
         var sumPointsXsprint=0;
@@ -62,6 +62,7 @@ var sedeGenerals=function(){
         var sumPointsAllSprintsTech=0;
         var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
         newObjtInfo.name=studentInfo['name'];
+        newObjtInfo.photo=studentInfo['photo'];
         //console.log(newObjtInfo);
         //console.log(studentInfo);
         if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
@@ -81,6 +82,7 @@ var sedeGenerals=function(){
                     sumPointsAllSprints+=obcjetsPoints['tech']+obcjetsPoints['hse'];//Saca la Suma de puntos de hse y tech de todos los srinpts
                     sumPointsAllSprintsHse+=pointsHse;
                     sumPointsAllSprintsTech+=pointsTech;
+                    arrayAllSprintsTechAndHse.push([pointsTech,pointsHse]);
                 }//cierra el for en f
                 
             }//el if de los sprints
@@ -92,21 +94,22 @@ var sedeGenerals=function(){
             if(sumPointsAllSprints>=goalPoints){ //determinando la cantidad de alumnas que superan la meta del 70 %
                 approveGoal++;
                 studentsApprovedGoal.push(newObjtInfo.name);//agregando los nombres de las alumnas que superan la meta un arreglo 
-                //console.log("Nombres de estudiantes aprobadas" + studentsApprovedGoal);
             }else{ // determinando cantidad de alumnas que no superan la meta del 70% y sus nombres
                 notApprovedGoal++;
                 studentsNotApprovedGoal.push(newObjtInfo.name); // agregando los nombres de las alumnas que no cumplieron con la meta del 70%
-                //console.log("Estudiantes no aprobadas"+studentsNotApprovedGoal);
+
 
             }// cierra el else que determina la cantidad la cantidad de alumnas que no cumplen la meta 
             if(sumPointsAllSprintsHse>=goalPointsHse){
                 numberStudentsApprovedHse++;
-                //console.log("los puntos que superan la meta son"+sumPointsAllSprintsHse);
             }//cierra if de points HSE 
             if(sumPointsAllSprintsTech>=goalPointsTech){
                 numberStudentsApprovedTech++;
-                //console.log("los puntos que superan la meta son"+sumPointsAllSprintsTech);
+                
             }
+            var percentAllSprintXstudent= Math.round((sumPointsAllSprints*100)/(3000*arraySprints.length));
+            printProfileStudents(newObjtInfo.name,newObjtInfo.photo,sumPointsAllSprints,percentAllSprintXstudent,arrayAllSprintsTechAndHse);
+            arrayAllSprintsTechAndHse = [];// se limpia el array 2D porque ya se imprimio en el html y solo considerar las activas
 
         }else{//Se obtiene el Nombre y la Cantidad de Alumnas Inactivas 
             arrayStudentsInactives.push(newObjtInfo.name);
@@ -117,9 +120,10 @@ var sedeGenerals=function(){
             nameList.appendChild(valueNameList);
             containerListNameInactive.appendChild(nameList);
             sumInactiveStudents+=1;//Se suman estudiantes Inactivas.
-        }//cierra el else de incativas 
+        }//cierra el else de incativas
+        
     }//cierra for en i
-    console.log(arrayStudentResults[0][1]);
+    //console.log(arrayStudentResults[0][1]);
 
     var totalStudentSede=(arrayStudents.length);
     var percentajeSuccesStudents=(approveGoal/ sumActiveStudents)*100;
@@ -195,12 +199,6 @@ var sedeGenerals=function(){
     containerTabStudentsActive.appendChild(valueTabsStudentsActive);
     containerActiveTabsStudents.appendChild(containerTabStudentsActive);
     //containerStudentsActivesInactives.replaceChild(containerInactivesStudents);
-
-    //*************************IMPRIMIENDO LOS PERFILES DE LAS ALUMNAS EN HTML (TAB ESTUDIANTES) */
-
-    //var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
-    //var createDivProfileStudent=document.createElement('div');
-    //var valueNamePoints=document.createTextNode(arrayStudentsResults);
 
 
     //******************* PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS GRAFICACION*******************
@@ -278,7 +276,8 @@ var sedeGenerals=function(){
     var resultadoSatisfactionXsede=0;//para determinar el porcentaje de Satisfaccion de toda la sede 
     var percentAllPointsTeacher=0;
     var percentAllPointsJedi=0;
-
+    var arrayPointsXsprintsTeachers=[];
+    var arrayPointsXsprintsJedi=[];
     for(var m=0; m<arrayRantings.length;m++){
         var ratingInfo=arrayRantings[m];
         //console.log(ratingInfo);
@@ -306,6 +305,8 @@ var sedeGenerals=function(){
                 pointsTeacherXsprint=ratingInfo['teacher'];
                 //console.log(pointsTeacherXsprint);
                 sumAllRatingTeacher+=pointsTeacherXsprint;
+                arrayPointsXsprintsTeachers.push([pointsTeacherXsprint]);
+                
 
             }//cierra el if de teacher
             var pointsJediXsprint=0;
@@ -313,11 +314,16 @@ var sedeGenerals=function(){
                 pointsJediXsprint=ratingInfo['jedi'];
                 //console.log(pointsJediXsprint);
                 sumAllRatingJedi+=pointsJediXsprint;
+                arrayPointsXsprintsJedi.push([pointsJediXsprint]);
             }
         }//cierra el for in
         //console.log(contRatingSprints);
 
     }//cierra el for em m
+    profileLaboratoriansTeachers(arrayPointsXsprintsTeachers);
+    profileLaboratoriansJedi(arrayPointsXsprintsJedi);
+    arrayPointsXsprintsTeachers=[];
+    arrayPointsXsprintsJedi=[];
     resultadoSatisfactionXsede=sumaSatisfactionAllSede/contRatingSprints;
     //console.log("promedio de satisfaccion"+resultadoSatisfactionXsede);
     percentAllPointsTeacher=Math.round(sumAllRatingTeacher/contRatingSprints);
@@ -341,12 +347,133 @@ var sedeGenerals=function(){
     var valuePointsJedi=document.createTextNode(percentAllPointsJedi);
     containerJedi.appendChild(valuePointsJedi);
 
-
-
-
-    
 }//cierra la Funcion SedeGenerals*/
 
+
+ //*************************IMPRIMIENDO LOS PERFILES DE LAS ALUMNAS EN HTML (TAB ESTUDIANTES) */
+
+
+    var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arregloSprints){
+
+    var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
+    var containerProfileStudent=document.createElement('div');
+    containerProfileStudent.setAttribute('class','formatProfileStudents');
+    var containerProfileSuperiorStudents=document.createElement('div');
+    var containerProfileInferiorStudents=document.createElement('div');
+    var createDivProfileStudent=document.createElement('div');
+    var parrafoName=document.createElement('p');
+    var imageProfile=document.createElement('img');
+    imageProfile.setAttribute('href',img);
+    imageProfile.setAttribute('src',img);
+    var divContianerPointsTotals=document.createElement('div');
+    var parrafPointsTotals=document.createElement('p');
+    var parrafPercentTotalPoints=document.createElement('p');
+    var tableContainerSprints=document.createElement('table');
+    var continerLineTitle=document.createElement('tr');
+    var sprintNumber=document.createElement('th');
+    var nameTech=document.createElement('th');
+    var nameHse=document.createElement('th');
+    nameHse.textContent="PUNTOS HSE";
+    nameTech.textContent="PUNTOS TECH";
+    sprintNumber.textContent="SPRINT"
+    var valueParrafoName=document.createTextNode(name);
+    var valueTotalAllPoints=document.createTextNode(totalPoints);
+    var valuePercentTotalPoints=document.createTextNode(percentAllSprints+'%');
+    parrafoName.appendChild(valueParrafoName);
+    containerProfileSuperiorStudents.appendChild(parrafoName);
+    containerProfileSuperiorStudents.appendChild(imageProfile);
+    containerProfileStudent.appendChild(containerProfileSuperiorStudents);
+    parrafPointsTotals.appendChild(valueTotalAllPoints);
+    parrafPercentTotalPoints.appendChild(valuePercentTotalPoints);
+    divContianerPointsTotals.appendChild(parrafPointsTotals);
+    divContianerPointsTotals.appendChild(parrafPercentTotalPoints);
+    containerProfileInferiorStudents.appendChild(divContianerPointsTotals);
+    containerProfileStudent.appendChild(containerProfileInferiorStudents);
+    containerAllProfileStudent.appendChild(containerProfileStudent);
+    continerLineTitle.appendChild(sprintNumber);
+    continerLineTitle.appendChild(nameTech);
+    continerLineTitle.appendChild(nameHse);
+    tableContainerSprints.appendChild(continerLineTitle);
+
+    for(var i=0; i<arregloSprints.length; i++){
+        var containerLineTitle2=document.createElement('tr');
+        var sprintNumber2=document.createElement('td');
+        var nameTech2=document.createElement('td');
+        var nameHse2=document.createElement('td');
+        var sprintNumberValue=document.createTextNode(i+1);
+        var sprintValueTech=document.createTextNode(arregloSprints[i][0]);
+        var sprintValueHse=document.createTextNode(arregloSprints[i][1]);
+        sprintNumber2.appendChild(sprintNumberValue);
+        nameTech2.appendChild(sprintValueTech);
+        nameHse2.appendChild(sprintValueHse);
+        containerLineTitle2.appendChild(sprintNumber2);
+        containerLineTitle2.appendChild(nameTech2);
+        containerLineTitle2.appendChild(nameHse2);
+        tableContainerSprints.appendChild(containerLineTitle2);
+    }
+    containerProfileInferiorStudents.appendChild(tableContainerSprints);
+    containerProfileStudent.appendChild(containerProfileInferiorStudents);
+    containerAllProfileStudent.appendChild(containerProfileStudent);
+
+}//Cierra la Funcion PrintProfileStudents
+
+/**************IMPRIMIENDO LOS RESULTADOS DE LOS JEDI AND TEACHER EN TABS LABORATORIANS************************ */
+
+var profileLaboratoriansTeachers =function(arrayPointsTeachers){
+
+    var containerTeachers=document.getElementById('containerTeachers');
+    var tableTeachers=document.createElement('table');
+    var trTableTeachers=document.createElement('tr');
+    var nameSprint=document.createElement('th');
+    var nameScore=document.createElement('th');
+    nameSprint.textContent="SPRINT";
+    nameScore.textContent="POINTS";
+    trTableTeachers.appendChild(nameSprint);
+    trTableTeachers.appendChild(nameScore);
+    tableTeachers.appendChild(trTableTeachers);
+    for(var i=0; i<arrayPointsTeachers.length; i++){
+        var containerLineTeacher=document.createElement('tr');
+        var nameSprintNumber=document.createElement('td');
+        var nameScoreLine=document.createElement('td');
+        var sprintNumberValueTeacher=document.createTextNode(i+1);
+        var sprintValueScore=document.createTextNode(arrayPointsTeachers[i]);
+        nameSprintNumber.appendChild(sprintNumberValueTeacher);
+        nameScoreLine.appendChild(sprintValueScore);
+        containerLineTeacher.appendChild(nameSprintNumber);
+        containerLineTeacher.appendChild(nameScoreLine);
+        tableTeachers.appendChild(containerLineTeacher);
+    }
+        containerTeachers.appendChild(tableTeachers);
+}//SE CIERRA LA FUNCION DE PROFILELABORATORIANS
+
+
+var profileLaboratoriansJedi =function(arrayPointsJedi){
+    var containerJedis=document.getElementById('containerJedi');
+    var tableJedi=document.createElement('table');
+    var trTableJedi=document.createElement('tr');
+    var nameSprintJedi=document.createElement('th');
+    var nameScoreJedi=document.createElement('th');
+    nameSprintJedi.textContent="SPRINT";
+    nameScoreJedi.textContent="POINTS";
+    trTableJedi.appendChild(nameSprintJedi);
+    trTableJedi.appendChild(nameScoreJedi);
+    tableJedi.appendChild(trTableJedi);
+    containerJedis.appendChild(tableJedi);
+    for(var i=0; i<arrayPointsJedi.length; i++){
+        var containerLineJedi=document.createElement('tr');
+        var nameSprintNumberJedi=document.createElement('td');
+        var nameScoreLineJedi=document.createElement('td');
+        var sprintNumberValueJedi=document.createTextNode(i+1);
+        var sprintValueScoreJedi=document.createTextNode(arrayPointsJedi[i]);
+        nameSprintNumberJedi.appendChild(sprintNumberValueJedi);
+        nameScoreLineJedi.appendChild(sprintValueScoreJedi);
+        containerLineJedi.appendChild(nameSprintNumberJedi);
+        containerLineJedi.appendChild(nameScoreLineJedi);
+        tableJedi.appendChild(containerLineJedi);
+        }
+        containerJedis.appendChild(tableJedi);
+
+}//Cierra funcion profileLaboratoriansJedi
 
 
 
@@ -381,8 +508,9 @@ function openTab(evt, sedeName) {
     }
     // Muestra el tab actual, y añade una clase "active"al boton que abre el tab
     document.getElementById(sedeName).style.display = "block";
-    evt.currentTarget.className += " active";
+    evt.currentTarget.className += "active";
 }
+
 //************ Funcion Tabs TERMINA *************
 
 /******************************GRAFICANDO********************* */
