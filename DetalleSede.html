@@ -39,36 +39,43 @@
         </div>
 
       <!-- Tab content -->
-        <div id="Generales" class="tabcontent">
-          <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
-          <h3 id="all">Generales</h3>
-          <div id="data-container-generals" class="grid">
-            <p id="container-venue-Sede">NUMERO DE ALUMAS TOTALES</p>
+      <div id="Generales" class="tabcontent">
+        <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
+        <h3 id="all">Generales</h3>
+          <p id="container-venue-Sede">TOTAL DE ALUMNAS EN ESTA GENERACION:</p>
+          <div id="containerTable2">
             <table id="containerTable" class="table">
               <tr>
                 <th>Alumnas Activas</th>
                 <th>Alumnas Inactivas</th>
               </tr>
             </table>
-            <!--<div>ALUMNAS INACTIVAS</div>-->
-            <button class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
             <div id="chart_div"></div>
-            <div id="AlumnasApproved-NotApproved">ALUMNAS EXITOSAS
-              <p id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</p>   
-              <P id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</P>
-            </div>  
-            <div id="AlumnasApproved-Tech">RESULTADOS TECNICOS
-              <p id="title-numberTech">CANTIDAD DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</p>   
-              <P id="title-percentTech">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META EN NIVEL TECNICO</P>
-            </div>
-            <div id="AlumnasApproved-Hse" class="info-compair">
-              <div><h3>RESULTADOS EN HSE</h3></div> 
-                    <div>
-                      <h4 id="title-numberHse">Cantidad de Alumnas que superaron la meta</h4>   
-                      <h4 id="title-percentHse">%de alumnas que superaron meta HSE</h4>
-                    </div>    
-            </div>
-            <div id="top_x_div"></div>
+            <button class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
+            <div id="listado-name-inactive"><h3 id= "title-list-inactive">ALUMNAS INACTIVAS</h3></div>
+          </div> 
+          <div id="AlumnasApproved-Tech" class= "info-compair">
+              <div><h3>RESULTADOS NIVEL TECNICO</h3>
+              </div>
+                  <div>
+                      <h4 id="title-numberTech">Cantidad de Alumnas que superaron la meta</h4>   
+                      <h4 id="title-percentTech">% de alumnas que superaron la meta</h4>
+                  </div>
+          </div>
+          <div id="AlumnasApproved-Hse" class="info-compair">
+            <div><h3>RESULTADOS EN HSE</h3></div> 
+                  <div>
+                    <h4 id="title-numberHse">Cantidad de Alumnas que superaron la meta</h4>   
+                    <h4 id="title-percentHse">%de alumnas que superaron meta HSE</h4>
+                  </div>    
+          </div>
+          <div id="top_x_div"></div> 
+            
+            
+           
+            
+            
+            
             <div id="AlumnasApproved-NotApproved">ALUMNAS EXITOSAS
                 <p id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</p>   
                 <P id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</P>
@@ -109,10 +116,6 @@
 		<!-- Aquí va tus archivos JS -->
     <script src="./js/app.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<<<<<<< HEAD
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  
-=======
     <script>
       function mostrarVentana(){
         var ventana = document.getElementById('listado-name-inactive');
@@ -126,6 +129,5 @@
         ventana.style.display = 'none';
       }
     </script>
->>>>>>> upstream/master
   </body>
 </html>
