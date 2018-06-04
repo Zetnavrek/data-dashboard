@@ -227,7 +227,7 @@ var sedeGenerals=function(){
         var options = {'title':'Porcentaje de estudiantes Activas e Inactivas',
                         'is3D':true,
                         'width':450,
-                        'height':350,
+                        'height':300,
                         'colors': ['#56F89A', '#FFE521']
                     };
 
@@ -236,7 +236,35 @@ var sedeGenerals=function(){
         chart.draw(data, options);
         }
 
+    /*****************************SE GRAFICAN PORCENTAJES HSE Y TECNICO ********************/
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawStuff);
 
+    function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+            ['Asignatura', 'Porcentaje'],
+            ["TECNICO", numberStudentsApprovedTech],
+            ["HSE", numberStudentsApprovedHse],
+        ]);
+
+        var options = {
+            title: 'Comparacion de Alumnas que superan la meta en nivel Tecnico y HSE',
+            width: 600,
+            legend: { position: 'none' },
+            chart: { title: 'Chess opening moves',
+                    subtitle: 'popularity by percentage' },
+            bars: 'horizontal', // Required for Material Bar Charts.
+            axes: {
+            x: {
+                0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+            },
+            bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+    }; //se cierra funcion de chart barras
     //*****************CALCULANDO CANTIDAD Y % DE ACEPTACION */ y DETERMINANDO LOS PUNTOS DE TEACHERS Y JEDIS
     var arrayRantings=objContentGeneration['ratings'];
     //console.log(arrayRantings);
