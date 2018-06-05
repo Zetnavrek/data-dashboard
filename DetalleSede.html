@@ -13,9 +13,10 @@
           <img id="logo-venues" src="assets/images/Labo.jpg" alt="">
           
           <div>
-            <img id="avatar-venues" src="assets/images/avatar.jpg" alt="">
+              <img id="avatar-venues" src="assets/images/Karla-rejas.jpg" alt="">
+              <button id="button-venues">Sign Out</button>
             <!--Seccion de Filtros de Generacion y Turno -->
-            <nav id="filtros-Principales"> <!--Filtro Generacion-->
+          <nav id="filtros-Principales"> <!--Filtro Generacion-->
               <select name="Generacion" id="generationFilter" onchange=sedeGenerals()><!--el onchage nos sirve para en un select cuando haras el cambio entre una opcion y otra y al hacer el cambio de manda a llamar a la Funcion sedeGenrals.-->
                 <option value="" disabled selected >Selecciona una Generacion...</option>
               </select>
@@ -26,84 +27,80 @@
               </select>
               <!--Seccion de nombre para cada sede-->
               <div id="sede-name"></div>
-            </nav>
+          </nav>
           </div>
       </header>
     <main>
       <!--Seccion de los Tabs de Generales,Estudiantes y Laboratorians.-->
-      <section>
+  <section>
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'Generales')">Generales</button>
           <button class="tablinks" onclick="openTab(event, 'Estudiantes')">Estudiantes</button>
           <button class="tablinks" onclick="openTab(event, 'Laboratorians')">Laboratorians</button>
         </div>
-
       <!-- Tab content -->
-      <div id="Generales" class="tabcontent">
+    <div id="Generales" class="tabcontent">
         <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
         <h3 id="all">Generales</h3>
           <p id="container-venue-Sede">TOTAL DE ALUMNAS EN ESTA GENERACION:</p>
           <div id="containerTable2">
-            <table id="containerTable" class="table">
-              <tr>
-                <th>Alumnas Activas</th>
-                <th>Alumnas Inactivas</th>
-              </tr>
+              <table id="containerTable" class="table">
+                  <tr>
+                    <th>Alumnas Activas</th>
+                    <th>Alumnas Inactivas</th>
+                  </tr>
               </table>
-              <button id= "show-window"class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
+            <button id= "show-window"class="tablinks" onclick="mostrarVentana()">Ver Alumnas Inactivas </button>
             <div id="chart_div"></div>
-            <!--<div id="listado-name-inactive"><h3 id= "title-list-inactive">ALUMNAS INACTIVAS</h3></div>
-          </div> -->
           <div id="AlumnasApproved-NotApproved"> <h3>ALUMNAS EXITOSAS</h3>
-            <h4 id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
-            <h4 id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
+              <h4 id="title-numberSucces">CANTIDAD DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
+              <h4 id="title-percentSucces">PORCENTAJE DE ALUMNAS QUE SUPERARON LA META DE LA SEDE</h4>
           </div>
           <div id="AlumnasApproved-Tech" class= "info-compair">
-              <div><h3>RESULTADOS NIVEL TECNICO</h3>
-              </div>
-              <div>
-                  <h4 id="title-numberTech">Cantidad de Alumnas que superaron la meta</h4>   
-                  <h4 id="title-percentTech">% de alumnas que superaron la meta</h4>
-              </div>
+                <div><h3>RESULTADOS NIVEL TECNICO</h3>
+          </div>
+          <div>
+              <h4 id="title-numberTech">Cantidad de Alumnas que superaron la meta</h4>   
+              <h4 id="title-percentTech">% de alumnas que superaron la meta</h4>
+          </div>
           </div>
           <div id="AlumnasApproved-Hse" class="info-compair">
-            <div><h3>RESULTADOS EN HSE</h3></div> 
-                  <div>
-                    <h4 id="title-numberHse">Cantidad de Alumnas que superaron la meta</h4>   
-                    <h4 id="title-percentHse">%de alumnas que superaron meta HSE</h4>
+              <div><h3>RESULTADOS EN HSE</h3></div> 
+                    <div>
+                        <h4 id="title-numberHse">Cantidad de Alumnas que superaron la meta</h4>   
+                        <h4 id="title-percentHse">%de alumnas que superaron meta HSE</h4>
                   </div>    
-          </div>
-          <div id="top_x_div"></div>
-            <div id="percentSatisfaction" class= "info-compair">PORCENTAJE DE ESTUDIANTES SATISFECHAS 
-              <p id="containerPercetSatisfaction"></p>
-            </div>
-            <div id="pointsPromTeachers"class= "points-teachers" >PUNTOS PROMEDIO TEACHERS
-                <p id="containerPointsTeachers"></p>
               </div>
-            <div id="pointsPromJedi" class= "points-jedi" >PUNTOS PROMEDIO JEDI
-                <p id="containerPointsJedi"></p>
-            </div>
+          <div id="top_x_div"></div>
+              <div id="percentSatisfaction" class= "info-compair"><p>PORCENTAJE DE ESTUDIANTES <br>SATISFECHAS </p>
+                  <p id="containerPercetSatisfaction"></p>
+              </div>
+              <div id="pointsPromTeachers" class= "points-teachers"><h5>PUNTOS PROMEDIO TEACHERS</h5>
+                  <p id="containerPointsTeachers"></p>
+              </div>
+              <div id="pointsPromJedi" class= "points-jedi"><h5>PUNTOS PROMEDIO JEDI</h5>
+                  <p id="containerPointsJedi"></p>
+              </div>
           </div>
-        </div>   
-        <div id="Estudiantes" class="tabcontent">
-            <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
+    </div>   
+    <div id="Estudiantes" class="tabcontent">
+          <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
           <h3 id="all">Estudiantes</h3>
           <p id="container-venue-Sede">ALUMNAS ACTIVAS</p>
-            <p id='active-studens' class= "container-venue-Sede"></p>
-            </p>
+          <p id='active-studens' class= "container-venue-Sede"></p>
           <div id="containerAllprofileStudents">
-              <div id="chart_div"></div>
-        </div>
-      </div>
-      <div id="Laboratorians" class="tabcontent">
+                <div id="chart_div"></div>
+          </div>
+    </div>
+    <div id="Laboratorians" class="tabcontent">
           <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
           <h3 id="all">Laboratorians</h3>
           <div id="containerAllprofileLaboratorians" >
-            <div id="containerTeachers"class="formatContainerTeachers">TEACHERS</div>
-            <div id="containerJedi" class="formatcontainerJedis">JEDI</div>
+                <div id="containerTeachers"class="formatContainerTeachers">TEACHERS</div>
+                <div id="containerJedi" class="formatcontainerJedis">JEDI</div>
           </div>
-      </div>  
-    </section>
+    </div>  
+  </section>
     <div id="listado-name-inactive" class="format-modal"><h3 id= "title-list-inactive">Alumnas Inactivas</h3>
         <button class="tablinks" onclick="ocultarVentana()">CERRAR</button>
     </div>
@@ -114,17 +111,16 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/app.js"></script>
     <script>
-      function mostrarVentana(){
-        var ventana = document.getElementById('listado-name-inactive');
-        ventana.style.marginTop = "100px";
-        ventana.style.left = ((document.body.clientWidth-350) / 2) +  "px";
-        ventana.style.display = 'block';
-      }
-      function ocultarVentana(){
-        var ventana = document.getElementById('listado-name-inactive');
-        ventana.style.display = 'none';
-      }
+        function mostrarVentana(){
+            var ventana = document.getElementById('listado-name-inactive');
+            ventana.style.marginTop = "100px";
+            ventana.style.left = ((document.body.clientWidth-350) / 2) +  "px";
+            ventana.style.display = 'block';
+        }
+        function ocultarVentana(){
+            var ventana = document.getElementById('listado-name-inactive');
+            ventana.style.display = 'none';
+        }
     </script>
-    
   </body>
 </html>
