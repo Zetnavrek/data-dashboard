@@ -35,7 +35,7 @@ header {
     position:relative;
     display:inline-block;
     left:2%;
-    top:10px;
+    top:5px;
     height: 65px;
     width: 65px;
 }
@@ -52,7 +52,7 @@ header {
 #sign-out{
     font-family: 'Fjalla One', sans-serif;
     position: relative;
-    left: 83.5%;
+    left: 83.3%;
     padding: 5px 18px;
     border: none;
     text-decoration: none;
@@ -70,7 +70,7 @@ header {
 #button-venues {
     font-family: 'Fjalla One', sans-serif;
     position: relative;
-    left: 83.5%;
+    left: 61%;
     padding: 4px 18px;
     border: none;
     text-decoration: none;
@@ -89,12 +89,25 @@ header {
     border-radius: 100%;
     bottom:9vh;
 }
+.format-return{
+    position:relative;
+    text-decoration: none;
+    left:215px;
+    padding: 0;
+    bottom:1vh;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: bold;
+    color:black;
+}
 
 nav {
     position: relative;
     display: block;
     left:0;
-    bottom: 70px;
+    bottom: 85px;
+    
 }
 
 #sede-name{
@@ -106,8 +119,8 @@ nav {
     font-weight: bold;
     padding: 15px 30px;
     border-radius: 2px;
-    bottom: 11vh;
-    left: 8%;
+    bottom: 15vh;
+    left: 37%;
     border: 1px solid #ccc;
 }
 
@@ -117,7 +130,7 @@ select {
     border-bottom: 2px solid lightblue;
     height: 30px;
     border-radius: 5px;
-    bottom: 2vh;
+    top:1vh;
 }
 
 #generationFilter {
@@ -143,7 +156,7 @@ select {
     top: 100px;
 }
 
-a{
+.formatLinkSede{
     display: block;
     position: relative;
     height: 45px;
@@ -268,6 +281,7 @@ a{
     display: none;
     padding: 6px 12px;
     border-top: none;
+    height: auto;
 }
 /*Se agrega grafica de pastel para porcentaje de activas e inactivas*/
 #chart_div {
@@ -345,6 +359,13 @@ a{
     top: 30vh;
 }
 
+#listado-name-inactive{
+    font-size: 25px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-align: center;
+    margin:5%;
+
+}
 #containerTable2{
     bottom: 10vh;
     width: 100%;
@@ -355,7 +376,7 @@ a{
     text-align: center;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     background-color: #ccc;
 }
 
@@ -478,7 +499,60 @@ a{
 
 .formatContainerAllProfile{
     border: 3px solid rgb(153, 153, 153);
-    width: 70%;
+    width: 65%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin: 1%;
+}
+.formatProfileStudents{
+    width:50%;
+    padding-left:3%;
+    height:auto;
+}
+
+.formatProfileSuperior{
+    font-family: "Kaffeesatz", sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+    width:50%;
+}  
+.formatProfileInferior{
+    font-family: "Kaffeesatz", sans-serif;
+    width:50%;
+}
+.formatGraphicSprints{
+    border: 3px solid rgb(153, 153, 153);
+    display: inline-block;
+    position:relative;
+    left:180px;
+    bottom: 300px;
+    /*float: right;*/
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin-left: 15%;
+    height: auto;
+}
+
+.formatTablePoints{
+    text-align: center;
+    padding:5x;
+}
+.formatNameStudent{
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Tajawal', sans-serif;
+    height: auto;
+
+}
+/*************************FORMATOS PERFILES LABORATORIAS***********************/
+.formatContainerTeachers{
+    border: 3px solid rgb(153, 153, 153);
+    width: 60%;
     height: auto;
     display: inline-block;
     position: relative;
@@ -486,46 +560,21 @@ a{
     text-align: left;
     border-radius: 2px;
     margin: 3%;
-}
-.formatProfileStudents{
-    outline: 1px solid green;
-    width:50%
-}
-
-.formatProfileSuperior{
-    font-family: "Kaffeesatz", sans-serif;
-    font-weight: bolder;
     font-size: 18px;
-    outline: 1px solid black;
-    width:50%;
-}  
-.formatProfileInferior{
     font-family: "Kaffeesatz", sans-serif;
-    outline: 1px solid red;
-    width:50%;
-}
-.formatGraphicSprints{
-    border: 3px solid rgb(153, 153, 153);
-    width: 40%;
-    display: inline-block;
-    position:relative;
-    left:500px;
-    bottom: 400px;
-    height: inherit;
-    /*float: right;*/
-    font-family: "Kaffeesatz", sans-serif;
-    text-align: left;
-    border-radius: 2px;
-}
-/*************************FORMATOS PERFILES LABORATORIAS***********************/
-.formatContainerTeachers{
-    border:1px solid black;
-    margin:5%;
 }
 
 .formatcontainerJedis{
-    border:1px solid black;
-    margin:5%;
+    border: 3px solid rgb(153, 153, 153);
+    width: 60%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin: 3%;
+    font-family: "Kaffeesatz", sans-serif;
 }
 
 /***************************FORMATO DE LA VENTANA MODAL********************/
@@ -560,4 +609,18 @@ a{
     left: 36%;
     position: relative;
     display: inline-block;
+}
+
+
+/*****************FORMATOS PARA EL BOTON DE CERRAR DENTRO DEL MODAL******************/
+.closeFormat{
+    display: inline-block;
+    position: relative;
+    border: none;
+    left:150px;
+    padding: 2px;
+    border-radius: 2px;
+    font-size: 30px;
+    background-color: transparent;
+
 }

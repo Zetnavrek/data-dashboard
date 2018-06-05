@@ -65,8 +65,6 @@ var sedeGenerals=function(){
         var studentInfo=arrayStudents[i]; //Guarda todo el Objeto que se encuentra dentro de Students.
         newObjtInfo.name=studentInfo['name'];
         newObjtInfo.photo=studentInfo['photo'];
-        //console.log(newObjtInfo);
-        //console.log(studentInfo);
         if(studentInfo.active==true){ //Se corrobora que las alumnas esten activas
             sumActiveStudents+=1; //se suman estudiantes Activas.
             if(studentInfo.sprints){ // Se especifica que cuando entre a la llave sprints del Objeto que se encuentra dentro de la variable studentInfo haga lo que sigue
@@ -76,7 +74,6 @@ var sedeGenerals=function(){
                 goalPointsTech=1260*arraySprints.length;
                 for(var f=0; f<arraySprints.length;f++){
                     var obcjetSprintNumber=arraySprints[f];
-                    //console.log(obcjetSprintNumber);
                     var obcjetsPoints=obcjetSprintNumber['score'];
                     var pointsTech=obcjetsPoints['tech'];
                     var pointsHse=obcjetsPoints['hse'];
@@ -89,8 +86,6 @@ var sedeGenerals=function(){
                 
             }//el if de los sprints
             newObjtInfo.sumaTotalAllSprints=sumPointsAllSprints; //se le Asigna al Objeto nuevo creado la key suma total all Sprint y se asigna el valor de esa key
-            //console.log( sumPointsAllSprints);
-            //console.log(newObjtInfo);
             arrayStudentResults.push([newObjtInfo.name,sumPointsAllSprints]);//Se agrega el nuevo objeto que fue creado al array Student Results
             
             if(sumPointsAllSprints>=goalPoints){ //determinando la cantidad de alumnas que superan la meta del 70 %
@@ -125,7 +120,6 @@ var sedeGenerals=function(){
         }//cierra el else de incativas
         
     }//cierra for en i
-    //console.log(arrayStudentResults[0][1]);
  
     //Determinando total de estudiantes sede, porcentajes total aprobadas, total Tech y total Hse. 
 
@@ -202,23 +196,18 @@ var sedeGenerals=function(){
     var valueTabsStudentsActive=document.createTextNode(sumActiveStudents);
     containerTabStudentsActive.appendChild(valueTabsStudentsActive);
     containerActiveTabsStudents.appendChild(containerTabStudentsActive);
-    //containerStudentsActivesInactives.replaceChild(containerInactivesStudents);
 
 
     //******************* PORCENTAJES DE ALUMNAS ACTIVAS E INACTIVAS GRAFICACION*******************
-    // Load the Visualization API and the corechart packages
+
 
     google.charts.load('current', {'packages':['corechart']});
 
-        //Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart);
 
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function drawChart() {
+    function drawChart() {
 
-        // Create the data table.
+    // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'ActiveInactive');
         data.addColumn('number', 'Slices');
@@ -234,21 +223,18 @@ var sedeGenerals=function(){
                         'height':300,
                         'colors': ['#56F89A', '#FFE521']
                     };
-
-        // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-        }
+    }
 
     /*****************************SE GRAFICAN PORCENTAJES HSE Y TECNICO ********************/
-    //google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawStuff);
 
     function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
             ['Asignatura', 'Porcentaje'],
-            ["TECNICO", numberStudentsApprovedTech],
-            ["HSE", numberStudentsApprovedHse],
+            ["TECNICO", percentajeStudentsApprovedTech],
+            ["HSE",  percentajeStudentsApproveHse],
         ]);
 
         var options = {
@@ -268,9 +254,9 @@ var sedeGenerals=function(){
         var chart = new google.charts.Bar(document.getElementById('top_x_div'));
         chart.draw(data, options);
     }; //se cierra funcion de chart barras
+
     //*****************CALCULANDO CANTIDAD Y % DE ACEPTACION */ y DETERMINANDO LOS PUNTOS DE TEACHERS Y JEDIS
     var arrayRantings=objContentGeneration['ratings'];
-    //console.log(arrayRantings);
     var totalSatisfactionxSpring=0;//Se utilizara para determinar la cantidad de alumnas satisfechas x sprint
     var sumaSatisfactionAllSede=0;//Se utilziara para determinar el total de alumas satisfechas de toda la sede
     var contRatingSprints=0;//para determinar la cantidad de Sprints
@@ -283,30 +269,23 @@ var sedeGenerals=function(){
     var arrayPointsXsprintsJedi=[];
     for(var m=0; m<arrayRantings.length;m++){
         var ratingInfo=arrayRantings[m];
-        //console.log(ratingInfo);
         for(var i in ratingInfo){
-            //console.log(i);
+        
             if(i=='sprint'){
                 contRatingSprints++;
             }
             if(i=='student'){
                 var objtstundet=ratingInfo[i];
-                //console.log(objtstundet);
                 var contNoCumple=objtstundet['no-cumple'];
                 var cumple=objtstundet['cumple'];
                 var supera=objtstundet['supera'];
-                totalSatisfactionxSpring=supera+cumple;//determinando el % de satisfaccion por Spring
-                //console.log("hola"+totalSatisfactionxSpring);
-        //console.log(contNoCumple);
-
-        //console.log(entrandoRatingStudent);
+                totalSatisfactionxSpring=supera+cumple;//determinando el % de satisfaccion por Sprin
                 sumaSatisfactionAllSede+=totalSatisfactionxSpring; //Se hace la Suma de todos los satisfechos de todos los  Sprint 
             }//cierra el if
             
             var pointsTeacherXsprint=0;//se vuelvan a hacer 0 para contabilizar desde cero cuando pase a la siguiente Estudiante
             if(i=='teacher'){//se determinan los puntos de los teacher y Jedai x Sprint y en total de toda la sede
                 pointsTeacherXsprint=ratingInfo['teacher'];
-                //console.log(pointsTeacherXsprint);
                 sumAllRatingTeacher+=pointsTeacherXsprint;
                 arrayPointsXsprintsTeachers.push([pointsTeacherXsprint]);
                 
@@ -315,24 +294,20 @@ var sedeGenerals=function(){
             var pointsJediXsprint=0;
             if(i=='jedi'){
                 pointsJediXsprint=ratingInfo['jedi'];
-                //console.log(pointsJediXsprint);
                 sumAllRatingJedi+=pointsJediXsprint;
                 arrayPointsXsprintsJedi.push([pointsJediXsprint]);
             }
         }//cierra el for in
-        //console.log(contRatingSprints);
 
     }//cierra el for em m
+    
     profileLaboratoriansTeachers(arrayPointsXsprintsTeachers);
     profileLaboratoriansJedi(arrayPointsXsprintsJedi);
     arrayPointsXsprintsTeachers=[];
     arrayPointsXsprintsJedi=[];
     resultadoSatisfactionXsede=sumaSatisfactionAllSede/contRatingSprints;
-    //console.log("promedio de satisfaccion"+resultadoSatisfactionXsede);
     percentAllPointsTeacher=Math.round(sumAllRatingTeacher/contRatingSprints);
-    //console.log("%Promedio de Teacher"+percentAllPointsTeacher);
     percentAllPointsJedi=Math.round(sumAllRatingJedi/contRatingSprints);
-    //console.log("%Promedio de Jedi"+percentAllPointsJedi);
 
 
       //*****************IMPRIMIENDO EN HTML EL % DE SATISFACCION POR SEDE  ********************
@@ -349,6 +324,7 @@ var sedeGenerals=function(){
     var containerJedi=document.getElementById('pointsPromJedi');
     var valuePointsJedi=document.createTextNode(percentAllPointsJedi);
     containerJedi.appendChild(valuePointsJedi);
+    openTab(event, 'Generales');
 
 }//cierra la Funcion SedeGenerals*/
 
@@ -357,7 +333,6 @@ var sedeGenerals=function(){
 
 
 var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arregloSprints){
-        //google.charts.load('current', {'packages':['corechart']});
 
     var containerAllProfileStudent=document.getElementById('containerAllprofileStudents');
     var containerDataAndGraphics=document.createElement('div');
@@ -374,6 +349,7 @@ var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arreglo
     containerProfileInferiorStudents.setAttribute('class','formatProfileInferior');
     var createDivProfileStudent=document.createElement('div');
     var parrafoName=document.createElement('p');
+    parrafoName.setAttribute('class','formatNameStudent');
     var imageProfile=document.createElement('img');
     imageProfile.setAttribute('href',img);
     imageProfile.setAttribute('src',img);
@@ -383,6 +359,7 @@ var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arreglo
     parrafPointsTotals.textContent="PUNTOS TOTALES:        ";
     parrafPercentTotalPoints.textContent="PORCENTAJE TOTAL:     ";
     var tableContainerSprints=document.createElement('table');
+    tableContainerSprints.setAttribute('class','formatTablePoints');
     var continerLineTitle=document.createElement('tr');
     var sprintNumber=document.createElement('th');
     var nameTech=document.createElement('th');
@@ -408,7 +385,10 @@ var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arreglo
     continerLineTitle.appendChild(nameTech);
     continerLineTitle.appendChild(nameHse);
     tableContainerSprints.appendChild(continerLineTitle);
-
+    graphData = [
+        ['Sprints','TECH','HSE'],
+    ];
+    
     for(var i=0; i<arregloSprints.length; i++){
         var contGraphic=i+1;
         var containerLineTitle2=document.createElement('tr');
@@ -427,33 +407,23 @@ var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arreglo
         containerLineTitle2.appendChild(nameTech2);
         containerLineTitle2.appendChild(nameHse2);
         tableContainerSprints.appendChild(containerLineTitle2);
+        graphData.push([contGraphic,techGraphicPoints,hseGraphicPoints]);
     }
     containerProfileInferiorStudents.appendChild(tableContainerSprints);
     containerProfileStudent.appendChild(containerProfileInferiorStudents);
     containerDataAndGraphics.appendChild(containerProfileStudent);
     containerDataAndGraphics.appendChild(containerGraphicSprints);
-    drawChartStudentsProfile(arregloSprints,contGraphic,techGraphicPoints,hseGraphicPoints, containerGraphicSprints);
+    drawChartStudentsProfile(graphData, containerGraphicSprints);
     containerAllProfileStudent.appendChild(containerDataAndGraphics);
-    //containerAllProfileStudent.appendChild(containerDataAndGraphics);
-
 
 }//Cierra la Funcion PrintProfileStudents
 
-        
-        //Set a callback to run when the Google Visualization API is loaded.
+//SE GRAFICA EN EL PERFIL DE CADA ESTUDIANTES EL RESULTADO DE CADA UNO DE SUS SPRINTS
         google.charts.setOnLoadCallback(drawChartStudentsProfile);
-
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function drawChartStudentsProfile(arregloSprints,contGraphic,techGraphicPoints,hseGraphicPoints,element) {
-
-        // Create the data table.
-        var data = google.visualization.arrayToDataTable([
-            ['Sprints','TECH','HSE'],[contGraphic,techGraphicPoints,hseGraphicPoints]
-        ]);     
-
-
+        function drawChartStudentsProfile(graphData,element) {
+        var data = google.visualization.arrayToDataTable(
+        graphData
+        );     
         // Set chart options
         var options = {
             chart:{
@@ -461,20 +431,9 @@ var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arreglo
     
                 }
             };
-
-        // Instantiate and draw our chart, passing in some options.
         var chart = new google.charts.Bar(element);
         chart.draw(data,google.charts.Bar.convertOptions(options));
         }
-
-
-
-
-
-
-
-
-
 
 
 /**************IMPRIMIENDO LOS RESULTADOS DE LOS JEDI AND TEACHER EN TABS LABORATORIANS************************ */
@@ -482,6 +441,10 @@ var printProfileStudents=function(name,img,totalPoints,percentAllSprints,arreglo
 var profileLaboratoriansTeachers =function(arrayPointsTeachers){
 
     var containerTeachers=document.getElementById('containerTeachers');
+    var parrafNameTeacher=document.createElement('p');
+    parrafNameTeacher.textContent="MONICA GARCIA";
+    var imgTeacher=document.createElement('img');
+    imgTeacher.setAttribute('src','http://dummyimage.com/162x148.png/ff4444/ffffff');
     var tableTeachers=document.createElement('table');
     var trTableTeachers=document.createElement('tr');
     var nameSprint=document.createElement('th');
@@ -497,18 +460,25 @@ var profileLaboratoriansTeachers =function(arrayPointsTeachers){
         var nameScoreLine=document.createElement('td');
         var sprintNumberValueTeacher=document.createTextNode(i+1);
         var sprintValueScore=document.createTextNode(arrayPointsTeachers[i]);
+        
         nameSprintNumber.appendChild(sprintNumberValueTeacher);
         nameScoreLine.appendChild(sprintValueScore);
         containerLineTeacher.appendChild(nameSprintNumber);
         containerLineTeacher.appendChild(nameScoreLine);
         tableTeachers.appendChild(containerLineTeacher);
     }
+        containerTeachers.appendChild(parrafNameTeacher);
+        containerTeachers.appendChild(imgTeacher);
         containerTeachers.appendChild(tableTeachers);
 }//SE CIERRA LA FUNCION DE PROFILELABORATORIANS
 
 
 var profileLaboratoriansJedi =function(arrayPointsJedi){
     var containerJedis=document.getElementById('containerJedi');
+    var parrafNameJedis=document.createElement('p');
+    parrafNameJedis.textContent="ELNA GARCIA";
+    var imgJedis=document.createElement('img');
+    imgJedis.setAttribute('src','http://dummyimage.com/190x155.png/dddddd/000000');
     var tableJedi=document.createElement('table');
     var trTableJedi=document.createElement('tr');
     var nameSprintJedi=document.createElement('th');
@@ -531,6 +501,8 @@ var profileLaboratoriansJedi =function(arrayPointsJedi){
         containerLineJedi.appendChild(nameScoreLineJedi);
         tableJedi.appendChild(containerLineJedi);
         }
+        containerJedis.appendChild(parrafNameJedis);
+        containerJedis.appendChild(imgJedis);
         containerJedis.appendChild(tableJedi);
 
 }//Cierra funcion profileLaboratoriansJedi
@@ -568,9 +540,7 @@ function openTab(evt, sedeName) {
     }
     // Muestra el tab actual, y añade una clase "active"al boton que abre el tab
     document.getElementById(sedeName).style.display = "block";
-    evt.currentTarget.className += "active";
+    evt.currentTarget.className += " active";
 }
 
 //************ Funcion Tabs TERMINA *************
-
-/******************************GRAFICANDO********************* */

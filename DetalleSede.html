@@ -13,6 +13,7 @@
             <img id="logo-venues" src="assets/images/Labo.jpg" alt="">
             <div>
                 <img id="avatar-venues" src="assets/images/Karla-rejas.jpg" alt="">
+                <div id="sede-name"></div>
                 <button id="button-venues">Sign Out</button>
             <!--Seccion de Filtros de Generacion y Turno -->
         <nav id="filtros-Principales"> <!--Filtro Generacion-->
@@ -24,10 +25,12 @@
                 <option value=""  disabled selected >Matutino</option>
                 <option value=""  disabled selected >Turno</option>
             </select>
-        <!--Seccion de nombre para cada sede-->
-            <div id="sede-name"></div>
-        </nav>
-        </div>
+                <a class="format-return" href="index.html">VER OTRA SEDE   <i class="fas fa-home"></i></a>
+                <!--Seccion de nombre para cada sede-->
+                <!--<div id="sede-name"></div>
+                <a class="format-return"href="index.html">VER OTRA SEDE</a>-->
+            </nav>
+            </div>
         </header>
     <main>
         <!--Seccion de los Tabs de Generales,Estudiantes y Laboratorians.-->
@@ -90,17 +93,18 @@
                 <div id="chart_div"></div>
             </div>
         </div>
-        <div id="Laboratorians" class="tabcontent">
-            <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
-            <h3 id="all">Laboratorians</h3>
-            <div id="containerAllprofileLaboratorians" >
-                <div id="containerTeachers"class="formatContainerTeachers">TEACHERS</div>
-                <div id="containerJedi" class="formatcontainerJedis">JEDI</div>
-            </div>
-        </div>  
-        </section>
+      </div>
+      <div id="Laboratorians" class="tabcontent">
+          <img id="brackets" src= "assets/images/brackets.jpeg"alt="">
+          <h3 id="all">Laboratorians</h3>
+          <div id="containerAllprofileLaboratorians" >
+            <div id="containerTeachers"class="formatContainerTeachers"><h3 style="text-align: center;" >TEACHERS</h3></div>
+            <div id="containerJedi" class="formatcontainerJedis"><h3 style="text-align: center;">JEDI<h3></div>
+          </div>
+      </div>  
+    </section>
     <div id="listado-name-inactive" class="format-modal"><h3 id= "title-list-inactive">Alumnas Inactivas</h3>
-        <button class="tablinks" onclick="ocultarVentana()">CERRAR</button>
+          <i class="fas fa-window-close closeFormat" onclick="ocultarVentana()"></i>
     </div>
     </main>
     <!-- Base de datos -->
