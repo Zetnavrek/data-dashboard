@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+
 header {
     background-color:whitesmoke;
     width: 100%;
@@ -14,17 +15,27 @@ header {
 #logo {
     position:relative;
     display:inline-block;
-    left:40%;
+    left:2%;
     top:15px;
     height: 100px;
     width: 250px;
+}
+
+#hole-title{
+    font-family: 'Lato', sans-serif;
+    font-size: 50px;
+    position:relative;
+    display: inline-block;
+    left:34%;
+    bottom: 32vh;
+    color: rgb(80, 78, 78);
 }
 
 #logo-venues {
     position:relative;
     display:inline-block;
     left:2%;
-    top:10px;
+    top:5px;
     height: 65px;
     width: 65px;
 }
@@ -32,36 +43,102 @@ header {
     position: relative;
     display: inline-block;
     left: 89%;
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     border-radius: 100%;
-    bottom:85px;
+    bottom:15vh;
+}
+
+#sign-out{
+    font-family: 'Fjalla One', sans-serif;
+    position: relative;
+    left: 83.3%;
+    padding: 5px 18px;
+    border: none;
+    text-decoration: none;
+    background-color: #ffe521;
+    bottom: 11vh;
+    border: 1px solid  #ccc;
+}
+
+#sign-out:hover{
+    background-color: #ff009e;
+    color:white;
+    cursor: pointer;
+}
+
+#button-venues {
+    font-family: 'Fjalla One', sans-serif;
+    position: relative;
+    left: 61%;
+    padding: 4px 18px;
+    border: none;
+    text-decoration: none;
+    background-color: #ff009e;
+    bottom: 5.5vh;
+    border: 1px solid  rgb(173, 173, 173);
+    color:white;
 }
 
 #avatar-venues {
     position: relative;
     display: inline-block;
     left: 89%;
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
     border-radius: 100%;
-    bottom:65px;
+    bottom:9vh;
+}
+.format-return{
+    position:relative;
+    text-decoration: none;
+    left:215px;
+    padding: 0;
+    bottom:1vh;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: bold;
+    color:black;
 }
 
 nav {
     position: relative;
     display: block;
-    left: 2%;
-    bottom: 70px;
+    left:0;
+    bottom: 85px;
+    
+}
+
+#sede-name{
+    background-color: #ffe923;
+    position: relative;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 2px;
+    bottom: 15vh;
+    left: 37%;
+    border: 1px solid #ccc;
 }
 
 select {
     border: none;
+    position: relative;
     border-bottom: 2px solid lightblue;
-    width: 20%;
     height: 30px;
     border-radius: 5px;
+    top:1vh;
+}
 
+#generationFilter {
+    width: 20%;
+}
+
+#hour {
+    width: 10%;
 }
 #section1 {
     height: 530px;
@@ -77,17 +154,17 @@ select {
     left: 20%;
     text-align: center;
     top: 100px;
-    /*border: 1px solid black;*/
 }
 
-a{
+.formatLinkSede{
     display: block;
     position: relative;
     height: 45px;
     width: 280px;
+    color: rgb(92, 92, 92);
     margin: 1%;
     left: 55%;
-    /*border: 1px solid red;*/
+    border: 1px solid #ccc;
     text-decoration: none;
     bottom: 200px;
     border-radius: 4px;
@@ -99,7 +176,6 @@ a{
 #arequipa {
     background-color: #56F89A;
     padding-top: 0;
-    color:  white;
 }
 
 #arequipa:hover{
@@ -109,8 +185,6 @@ a{
 #lima {
     background-color: #56F89A;
     padding-top: 0; 
-    color:white;
-    
 }
 
 #lima:hover{
@@ -120,7 +194,6 @@ a{
 #gdl {
     background-color: #56F89A;
     padding-top: 0;
-    color:white;
 }
 
 #gdl:hover {
@@ -130,7 +203,6 @@ a{
 #chile {
     background-color: #56F89A;
     padding-top: 0;
-    color:white;
 }
 
 #chile:hover{
@@ -140,7 +212,6 @@ a{
 #cdmx {
     background-color: #56F89A;
     padding-top: 0;
-    color:white;
 }
 
 #cdmx:hover{
@@ -150,7 +221,6 @@ a{
 #brazil {
     background-color:#56F89A;
     padding-top: 0;
-    color: white;
 }
 
 #brazil:hover{
@@ -167,32 +237,6 @@ a{
     color: rgb(100, 99, 99);
     top:180px;
 }
-
-/*ESTILIZANDO LOS LINKS DE LAS SEDES**/
-
-
-/*.formatLinkSedeYellow{
-    display:block;
-    outline-color: 1px solid black;
-    padding:3em;
-    background-color:#ffe923;
-    text-decoration: none;
-    width:15%;
-    font-family: 'Ultra', serif;
-    font-weight:bolder;
-    text-align: center;
-    font-size: 18px;
-}
-.formatLinkSedelightYellow{
-    background-color: #ffeeb9;
-}
-.formatLinkSedeYellow:hover{
-    border-radius: 10px;
-    opacity: 0.5;
-}
-
-
-/******* Estilos del Tab comineza*************
 
 /* Style the tab */
 .tab {
@@ -214,7 +258,7 @@ a{
     transition: 0.3s;
     left: 60%;
     margin: 0px 5px;
-    color: rgba(32, 32, 32, 0.829);
+    color: rgba(14, 14, 14, 0.829);
     font-family: 'Fjalla One', sans-serif;
     font-size: 15px;
 }
@@ -227,7 +271,7 @@ a{
 
 /* crea un activo a la clase tracklink actual pinta de gris al boton cliqueado */
 .tab button.active {
-    background-color: #ccc;
+    background-color: rgb(184, 184, 184);
     border-radius: 10px;
 }
 
@@ -236,28 +280,347 @@ a{
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
     border-top: none;
-    height: 300px;
+    height: auto;
 }
-/*Se agrega y divide contenedor para agregar datos generales*/
-
-
-/*.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 5em;
-    grid-gap: 0.5em;
-    width: 50%;
+/*Se agrega grafica de pastel para porcentaje de activas e inactivas*/
+#chart_div {
     position: relative;
-    box-sizing: content-box;
-    border: 1px solid black;
-    top:20%;
-}*/
+    display: inline-block;
+    bottom: 10vh;
+    left:43%;
+}
+/*Se agrega estilo al titulo de las sedes*/
+#all {
+    font-family: 'Tajawal', sans-serif;
+    position: relative;
+    display: inline-block;
+    font-size: 60px;
+    left:30%;
+    color: rgb(100, 99, 99);
+    bottom: 3vh;
+}
+
+#brackets {
+    height: 100px;
+    width: 120px;
+    position: relative;
+    display: inline-block;
+    top:2vh;
+}
+
+#container-venue-Sede {
+    font-family: "Kaffeesatz", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 70%;
+    position: relative;
+    left: 15%;
+    bottom: 10vh;
+}
+
+.container-venue-Sede {
+    font-family: "Kaffeesatz", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 70%;
+    position: relative;
+    left: 15%;
+    bottom: 10vh;
+}
 
 .table {
-    border: 1px solid blue;
     position: relative;
-    left: 10%;
+    left: 22%;
     text-align: center;
+    top: 2vh;
+
+}
+
+#containerTable th {
+    font-family: "Kaffeesatz", sans-serif;
+    padding:10px 20px;
+    margin: 3%;
+    background-color:rgb(187, 186, 186);
+}
+
+#containerTable tr:nth-child(even) {
+    background-color: rgb(226, 225, 225);
+}
+
+
+
+#main-brackets {
+    height: 80px;
+    width: 100px;
+    position: relative;
+    display: inline-block;
+    right: 22%;
+    top: 30vh;
+}
+
+#listado-name-inactive{
+    font-size: 25px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    text-align: center;
+    margin:5%;
+
+}
+#containerTable2{
+    bottom: 10vh;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+#title-list-inactive{
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #ccc;
+}
+
+#AlumnasApproved-NotApproved{
+    border: 3px solid rgb(153, 153, 153);
+    width: 30%;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2px;
+    right: 10%;
+    top: 35vh;
+}
+
+#AlumnasApproved-NotApproved h3 {
+    background-color:  rgb(187, 186, 186);
+}
+
+.info-compair {
+    border: 3px solid rgb(153, 153, 153);
+    width: 30%;
+    height: 250px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top: 40vh;
+}
+
+.info-compair h3 {
+    background-color: rgb(187, 186, 186);
+    height: 100%;
+    padding: 5px 0;
+}
+
+#AlumnasApproved-Tech {
+    left: 20%;
+}
+
+#AlumnasApproved-Hse{
+    left: 20%;
+    
+}
+#top_x_div{
+    position: relative;
+    left: 33%;
+    top: 40vh;
+    width: 33%;
+}
+
+
+#percentSatisfaction{
+    border: 3px solid rgb(187, 186, 186);
+    width: 25%;
+    height: 100px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top: 60vh;
+    left: 35%;
+}
+
+#percentSatisfaction>p{
+    background-color: rgb(187, 186, 186);
+    font-weight: bold;
+}
+
+#percentSatisfaction :nth-child(2){
+    font-size: 20px;
+}
+
+
+.points-teachers{
+    border: 3px solid rgb(153, 153, 153);
+    width: 20%;
+    height: 75px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top: 80vh;
+    left: 1%;
+}
+.points-teachers>h5{
+    background-color: rgb(153, 153, 153);
+}
+.points-jedi{
+    border: 3px solid rgb(153, 153, 153);
+    width: 20%;
+    height: 75px;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: center;
+    border-radius: 2px;
+    top:80vh;
+    left: 5%;
+}
+.points-jedi>h5{
+    background-color: rgb(153, 153, 153);
+}
+
+.points-jedi:nth-child(2) {
+    background-color: rgb(153, 153, 153);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+
+/**************************FORMATOS DE LOS PERFILES STUDENTS *************************/
+
+.formatContainerAllProfile{
+    border: 3px solid rgb(153, 153, 153);
+    width: 65%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin: 1%;
+}
+.formatProfileStudents{
+    width:50%;
+    padding-left:3%;
+    height:auto;
+}
+
+.formatProfileSuperior{
+    font-family: "Kaffeesatz", sans-serif;
+    font-weight: bolder;
+    font-size: 18px;
+    width:50%;
+}  
+.formatProfileInferior{
+    font-family: "Kaffeesatz", sans-serif;
+    width:50%;
+}
+.formatGraphicSprints{
+    border: 3px solid rgb(153, 153, 153);
+    display: inline-block;
+    position:relative;
+    left:180px;
+    bottom: 300px;
+    /*float: right;*/
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin-left: 15%;
+    height: auto;
+}
+
+.formatTablePoints{
+    text-align: center;
+    padding:5x;
+}
+.formatNameStudent{
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Tajawal', sans-serif;
+    height: auto;
+
+}
+/*************************FORMATOS PERFILES LABORATORIAS***********************/
+.formatContainerTeachers{
+    border: 3px solid rgb(153, 153, 153);
+    width: 60%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin: 3%;
+    font-size: 18px;
+    font-family: "Kaffeesatz", sans-serif;
+}
+
+.formatcontainerJedis{
+    border: 3px solid rgb(153, 153, 153);
+    width: 60%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    font-family: "Kaffeesatz", sans-serif;
+    text-align: left;
+    border-radius: 2px;
+    margin: 3%;
+    font-family: "Kaffeesatz", sans-serif;
+}
+
+/***************************FORMATO DE LA VENTANA MODAL********************/
+.format-modal{
+    position: fixed; 
+    width: 350px;
+    height: 190px; 
+    top:0;
+    left: 0;
+    font-family:Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    font-weight: normal; 
+    border: #333333 3px solid; 
+    background-color: #FAFAFA; 
+    color: #000000; 
+    display:none;
+    overflow-y:scroll;
+}
+
+#active-studens{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/*Formato para el button de mostrar lista de alumnas inactivas*/
+#show-window {
+    border: none;
+    padding: 10px;
+    background-color: #ffe923;
+    border-radius: 2px;
+    bottom: 40vh;
+    left: 36%;
+    position: relative;
+    display: inline-block;
+}
+
+
+/*****************FORMATOS PARA EL BOTON DE CERRAR DENTRO DEL MODAL******************/
+.closeFormat{
+    display: inline-block;
+    position: relative;
+    border: none;
+    left:150px;
+    padding: 2px;
+    border-radius: 2px;
+    font-size: 30px;
+    background-color: transparent;
+
 }
