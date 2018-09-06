@@ -292,9 +292,12 @@ En esta Primera Version de Nuestra Herramienta Datadasboard nos concentramos pri
 
 6. Fotografia de Perfil de la Training Manager y la opcion de cerrar la cuenta.
 ```
+# Elaborado para 
+
+[Laboratoria](http://www.laboratoria.la/)
+
+
 ### PROTOTIPO VERSION 0.0.1
 
 
-## Pseudo-Codigo:
 
-## Diagrama de Flujo
